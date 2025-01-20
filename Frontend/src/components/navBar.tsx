@@ -18,12 +18,12 @@ const NavBar = () => {
       </div>
 
       <div className="flex items-center mb-4 md:mb-0">
-        <img src="/public/images/logo2.png" alt="logo" className="h-12 mr-2" />
+        <img src="/public/images/logo2.png" alt="logo" className="h-16 w-auto mr-2" />
         <h1 className="text-xl font-bold">Dance Management System</h1>
       </div>
 
       <div className="p-2">
-        <Link to="/register" className="mr-8">Register</Link> 
+        <Link to="/register" className="mr-4">Register</Link> 
         <Link to="/login">Login</Link>
       </div>
     </nav>
