@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+ import { Link } from "@tanstack/react-router";
 
 const NavBar = () => {
   return (
@@ -14,10 +14,10 @@ const NavBar = () => {
         >
           Home
         </Link>
-        <Link to="/courses" className="mr-4">Courses</Link>
+        <Link to="/courses">Courses</Link>
       </div>
 
-      <div className="flex items-center mb-4 md:mb-0">
+      <div className="flex items-center mb-4 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 -ml-4">
         <img src="/public/images/logo2.png" alt="logo" className="h-16 w-auto mr-2" />
         <h1 className="text-xl font-bold">Dance Management System</h1>
       </div>
@@ -31,3 +31,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
