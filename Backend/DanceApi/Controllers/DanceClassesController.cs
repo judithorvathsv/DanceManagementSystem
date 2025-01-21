@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DanceApi.Data;
 using DanceApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +30,20 @@ namespace DanceApi.Controllers
                 return NotFound();
             }
             return Ok(danceClass);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(DanceClassRequest request)
+        {
+            var danceClass = new DanceClass()
+            {
+                Name = request.Name
+            };
+
+            await _context.Classes.AddAsync(danceClass);
+            await _context.SaveChangesAsync();
+            var classDto = Mapping.ClassToDto(danceClass);
+            return CreatedAtAction(nameof(Get), new { Id = danceClass.Id }, classDto);
         }
 
 
