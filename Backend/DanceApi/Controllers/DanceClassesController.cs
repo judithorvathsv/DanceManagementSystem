@@ -2,6 +2,7 @@ using DanceApi.Data;
 using DanceApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DanceApi.Controllers
 {
@@ -18,7 +19,9 @@ namespace DanceApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DanceClass>>> GetList()
         {
-            return Ok(await _context.Classes.ToListAsync());
+            var classes = await _context.Classes.ToListAsync();
+            var classesDtos = classes.Select(Mapping.ClassToDto).ToList();
+            return Ok(classesDtos);
         }
 
         [HttpGet("{id}")]
