@@ -29,7 +29,7 @@ namespace DanceApi.Controllers
             {
                 return NotFound();
             }
-            return Ok(danceClass);
+            return Ok(Mapping.ClassToDto(danceClass));
         }
 
         [HttpPost]
