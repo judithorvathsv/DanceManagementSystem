@@ -2,7 +2,6 @@ using DanceApi.Data;
 using DanceApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DanceApi.Controllers
 {

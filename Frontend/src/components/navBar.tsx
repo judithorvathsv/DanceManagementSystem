@@ -14,7 +14,7 @@ const NavBar = () => {
         >
           Home
         </Link>
-        <Link to="/courses">Courses</Link>
+        <Link to="/danceClassList">Classes</Link>
       </div>
 
       <div className="flex items-center mb-4 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 -ml-4">
