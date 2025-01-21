@@ -25,7 +25,16 @@ namespace DanceApi.Controllers
             return Ok(await _context.Classes.ToListAsync());
         }
 
-
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DanceClass>> Get(Guid id)
+        {
+            var danceClass = await _context.Classes.FirstOrDefaultAsync(c => c.Id == id);
+            if (danceClass is null)
+            {
+                return NotFound();
+            }
+            return Ok(danceClass);
+        }
 
 
 
