@@ -12,3 +12,16 @@ export const saveNewDanceClass = (name: string) => {
     body: danceClassRequest,
   });
 };
+
+export const updateClass = (id: string, name: string) => {
+  const request = {
+    name,
+  };
+
+  return client.PATCH("/api/DanceClasses/{id}", {
+    params: {
+      path: { id: id.toString() },
+    },
+    body: request,
+  });
+};

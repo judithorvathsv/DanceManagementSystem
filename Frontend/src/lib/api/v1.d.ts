@@ -100,7 +100,36 @@ export interface paths {
         delete?: never;
         options?: never;
         head?: never;
-        patch?: never;
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["DanceClassRequest"];
+                    "text/json": components["schemas"]["DanceClassRequest"];
+                    "application/*+json": components["schemas"]["DanceClassRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["DanceClassDto"];
+                        "application/json": components["schemas"]["DanceClassDto"];
+                        "text/json": components["schemas"]["DanceClassDto"];
+                    };
+                };
+            };
+        };
         trace?: never;
     };
 }
@@ -108,6 +137,12 @@ export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
         DanceClass: {
+            /** Format: uuid */
+            id?: string;
+            name: string | null;
+            lections?: components["schemas"]["Lection"][] | null;
+        };
+        DanceClassDto: {
             /** Format: uuid */
             id?: string;
             name: string | null;

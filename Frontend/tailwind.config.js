@@ -13,7 +13,8 @@ export default {
       'black' : '#000000',
       'prim-dark': '#D4887A',
       'success': '#7FB069',
-      'success-dark': '#5C8C4D'
+      'success-dark': '#5C8C4D',
+      'error': '#d9534f'
     },
     extend: {
       keyframes: {

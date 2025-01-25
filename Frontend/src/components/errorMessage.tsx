@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SuccessMessageProps } from "../types/messageTypes";
 
-const SuccessMessage = ({
+const ErrorMessage = ({
   message,
   duration = 2500,
   onClose,
 }: SuccessMessageProps) => {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
- setTimeout(() => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setIsFadingOut(true);
       const fadeOutTimer = setTimeout(() => {
         onClose?.();
+   ;
       }, 500);
 
       return () => clearTimeout(fadeOutTimer);
     }, duration);
+
+    return () => clearTimeout(timer);
+  }, [duration, onClose]);
+
 
   return (
     <div className="flex justify-center w-full mt-4">
@@ -23,7 +29,7 @@ const SuccessMessage = ({
         <div
           className={`
             ${isFadingOut ? "animate-fade-out-up" : "animate-fade-in-down"} 
-            text-white px-4 py-3 rounded-lg shadow-lg border border-success bg-success
+            text-white px-4 py-3 rounded-lg shadow-lg border border-error bg-error
           `}
         >
           <div className="flex items-center">
@@ -38,7 +44,7 @@ const SuccessMessage = ({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
             <p className="font-semibold">{message}</p>
@@ -49,4 +55,4 @@ const SuccessMessage = ({
   );
 };
 
-export default SuccessMessage;
+export default ErrorMessage;

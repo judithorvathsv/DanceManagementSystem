@@ -12,6 +12,7 @@ const DanceClassList = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
+
   const getDanceClasses = async () => {
     try {
       const response = await danceClassesFetch();
@@ -34,8 +35,9 @@ const DanceClassList = () => {
     setRefreshTrigger(!refreshTrigger);
   };
 
-  const showTempCreatedMessage = (message: string) => {
+  const showTempSuccessMessage = (message: string) => {
     setSuccessMessage(message);
+    setRefreshTrigger(!refreshTrigger);
   };
 
   if (fetchError) {
@@ -57,7 +59,7 @@ const DanceClassList = () => {
       <CreateDanceClass
         handleCreateClass={handleCreateClass}
         onClassCreated={(name) =>
-          showTempCreatedMessage(`${name} class added successfully!`)
+          showTempSuccessMessage(`${name} class added successfully!`)
         }
       />
     );
@@ -71,6 +73,9 @@ const DanceClassList = () => {
             key={danceClass.id}
             id={danceClass.id}
             name={danceClass.name}
+            onClassUpdated={(name) =>
+              showTempSuccessMessage(`${name} class updated successfully!`)
+            }
           />
         ))}
       </div>
@@ -82,6 +87,7 @@ const DanceClassList = () => {
       {renderCreateClassButton()}
       {successMessage && (
         <SuccessMessage
+          key={Date.now()} 
           message={successMessage}
           onClose={() => {
             setSuccessMessage("");
