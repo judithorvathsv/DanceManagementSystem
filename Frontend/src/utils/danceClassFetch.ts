@@ -25,3 +25,11 @@ export const updateClass = (id: string, name: string) => {
     body: request,
   });
 };
+
+export const deleteClass = (id: string) =>
+  client.DELETE("/api/DanceClasses/{id}", {
+    params: {
+      path: { id: id },
+      query: undefined,
+    },
+  });

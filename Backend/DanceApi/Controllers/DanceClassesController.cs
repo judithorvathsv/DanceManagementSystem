@@ -69,11 +69,18 @@ namespace DanceApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
-            var classToDelete = _context.Classes.Where(d => d.Id == id).FirstOrDefault();
+            var classToDelete = _context.Classes
+         .Include(c => c.Lections)
+         .FirstOrDefault(d => d.Id == id);
 
             if (classToDelete is null)
             {
                 return NotFound();
+            }
+
+            if (classToDelete.Lections.Any())
+            {
+                return BadRequest("Cannot delete class because it has lections. Delete lections first.");
             }
 
             _context.Classes.Remove(classToDelete);

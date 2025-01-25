@@ -14,7 +14,8 @@ export default {
       'prim-dark': '#D4887A',
       'success': '#7FB069',
       'success-dark': '#5C8C4D',
-      'error': '#d9534f'
+      'error': '#ff0000',
+      'error-dark': '#D9534f',
     },
     extend: {
       keyframes: {

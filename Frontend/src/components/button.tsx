@@ -14,6 +14,7 @@ const Button = ({
   const variantStyles = {
     primary: "bg-prim hover:bg-prim-dark text-black",
     secondary: "bg-third hover:bg-third-dark text-black",
+    error: "bg-error-dark hover:bg-error text-black" 
   };
 
   const disabledStyle = "opacity-50 cursor-not-allowed";

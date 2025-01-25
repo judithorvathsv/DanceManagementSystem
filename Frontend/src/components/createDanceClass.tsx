@@ -3,12 +3,14 @@ import { saveNewDanceClass } from "../utils/danceClassFetch";
 import Button from "./Button";
 import { CreateDanceClassProp } from "../types/danceClassTypes";
 
-const CreateDanceClass = ({handleCreateClass, onClassCreated}:CreateDanceClassProp) => {
+const CreateDanceClass = ({
+  handleCreateClass,
+  onClassCreated,
+}: CreateDanceClassProp) => {
   const [formData, setFormData] = useState({ name: "" });
   const [errors, setErrors] = useState({ name: "" });
 
   const [submitError, setSubmitError] = useState("");
-
 
   const handleCancel = () => {
     handleCreateClass();
@@ -41,7 +43,7 @@ const CreateDanceClass = ({handleCreateClass, onClassCreated}:CreateDanceClassPr
     e.preventDefault();
     if (validateForm()) {
       try {
-        saveNewDanceClass(formData.name);      
+        saveNewDanceClass(formData.name);
         onClassCreated?.(formData.name);
         handleCreateClass();
       } catch (error) {

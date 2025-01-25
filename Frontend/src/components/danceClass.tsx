@@ -1,20 +1,44 @@
 import { DanceClassProp } from "../types/danceClassTypes";
-import { updateClass } from "../utils/danceClassFetch";
+import { deleteClass, updateClass } from "../utils/danceClassFetch";
 import Button from "./Button";
 import { useState } from "react";
 import ErrorMessage from "./errorMessage";
 
-const DanceClass = ({ name, id, onClassUpdated }: DanceClassProp) => {
+const DanceClass = ({
+  name,
+  id,
+  onClassUpdated,
+  onClassDeleted,
+}: DanceClassProp) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [updatedName, setUpdatedName] = useState(name);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleEdit = () => {
     setIsUpdating(true);
   };
 
-  const handleDelete = () => {
-    console.log(`Deleting class with id: ${id}`);
+  const handleDeleteInitiate = () => {
+    setIsDeleting(true);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await deleteClass(id);
+      onClassDeleted?.(name);
+      setIsDeleting(false);
+    } catch (error) {
+      console.error("Failed to delete class", error);
+      setErrorMessage(
+        "Failed to delete class. It may have associated lectures."
+      );
+      setIsDeleting(false);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setIsDeleting(false);
   };
 
   const handleSave = async () => {
@@ -77,12 +101,30 @@ const DanceClass = ({ name, id, onClassUpdated }: DanceClassProp) => {
                 Cancel
               </Button>
             </div>
+          ) : isDeleting ? (
+            <div
+              className="flex flex-col items-center w-full  p-6   rounded-lg border border-third-dark
+            bg-gradient-to-b from-gray-800 to-gray-900
+            shadow-[0_0_10px_rgba(255,255,255,0.1),_0_0_20px_rgba(255,255,255,0.1),_0_0_30px_rgba(255,255,255,0.1)] "
+            >
+              <p className="mb-2 text-center text-error-dark font-semibold">
+                Do you want to delete {name}?
+              </p>
+              <div className="flex space-x-2">
+                <Button variant="error" onClick={handleDelete} className="mr-2">
+                  Confirm Delete
+                </Button>
+                <Button variant="secondary" onClick={handleDeleteCancel}>
+                  Cancel
+                </Button>
+              </div>
+            </div>
           ) : (
             <>
               <Button variant="primary" onClick={handleEdit}>
                 Edit
               </Button>
-              <Button variant="secondary" onClick={handleDelete}>
+              <Button variant="secondary" onClick={handleDeleteInitiate}>
                 Delete
               </Button>
             </>

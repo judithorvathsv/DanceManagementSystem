@@ -12,7 +12,6 @@ const DanceClassList = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
-
   const getDanceClasses = async () => {
     try {
       const response = await danceClassesFetch();
@@ -28,6 +27,10 @@ const DanceClassList = () => {
 
   useEffect(() => {
     getDanceClasses();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [refreshTrigger]);
 
   const handleCreateClass = () => {
@@ -76,6 +79,9 @@ const DanceClassList = () => {
             onClassUpdated={(name) =>
               showTempSuccessMessage(`${name} class updated successfully!`)
             }
+            onClassDeleted={(name) =>
+              showTempSuccessMessage(`${name} class deleted successfully!`)
+            }
           />
         ))}
       </div>
@@ -87,7 +93,7 @@ const DanceClassList = () => {
       {renderCreateClassButton()}
       {successMessage && (
         <SuccessMessage
-          key={Date.now()} 
+          key={Date.now()}
           message={successMessage}
           onClose={() => {
             setSuccessMessage("");
