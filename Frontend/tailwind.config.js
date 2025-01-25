@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     colors:{
+      'main': '#242424',
       'prim' : '#f7bb9b',
-      'sec' : '#FDF0D5',
       'third': '#A0A0A0',  
       'third-dark': '#557A8A',  
       'black' : '#000000',

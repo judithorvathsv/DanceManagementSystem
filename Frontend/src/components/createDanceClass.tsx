@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { saveNewDanceClass } from "../utils/danceClassFetch";
-import Button from "./Button";
+import Button from "./button";
 import { CreateDanceClassProp } from "../types/danceClassTypes";
 
 const CreateDanceClass = ({

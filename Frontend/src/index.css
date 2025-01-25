@@ -44,3 +44,7 @@
   text-align: center;
   z-index: 1;
 }
+
+nav {
+  z-index: 9999;
+}
