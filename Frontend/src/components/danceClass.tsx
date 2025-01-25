@@ -1,6 +1,6 @@
 import { DanceClassProp } from "../types/danceClassTypes";
 import { deleteClass, updateClass } from "../utils/danceClassFetch";
-import Button from "./Button";
+import Button from "./button";
 import { useState } from "react";
 import ErrorMessage from "./errorMessage";
 

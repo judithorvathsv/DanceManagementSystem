@@ -17,7 +17,7 @@ export default {
       'error': '#ff0000',
       'error-dark': '#D9534f',
     },
-    extend: {
+    extend: {      
       maxWidth: {
         '8xl': '100rem', 
       },
