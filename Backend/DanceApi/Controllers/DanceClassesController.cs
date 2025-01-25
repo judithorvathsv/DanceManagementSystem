@@ -66,5 +66,20 @@ namespace DanceApi.Controllers
             return Ok(Mapping.ClassToDto(classToUpdate));
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var classToDelete = _context.Classes.Where(d => d.Id == id).FirstOrDefault();
+
+            if (classToDelete is null)
+            {
+                return NotFound();
+            }
+
+            _context.Classes.Remove(classToDelete);
+            _context.SaveChanges();
+            return NoContent();
+        }
+
     }
 }
