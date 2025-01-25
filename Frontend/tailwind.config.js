@@ -18,6 +18,9 @@ export default {
       'error-dark': '#D9534f',
     },
     extend: {
+      maxWidth: {
+        '8xl': '100rem', 
+      },
       keyframes: {
         'fade-in-down': {
           '0%': {
