@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { danceClassesFetch } from "../utils/danceClassFetch";
-import DanceClass from "./danceClass";
+import DanceClass from "../components/danceClass";
 import { DanceClassProp } from "../types/danceClassTypes";
-import CreateDanceClass from "./createDanceClass";
-import SuccessMessage from "./successMessage";
+import CreateDanceClass from "../components/createDanceClass";
+import SuccessMessage from "../components/successMessage";
 
 const DanceClassList = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);
