@@ -5,3 +5,10 @@ const client = createClient<paths>({ baseUrl: "http://localhost:5265/" });
 
 export const danceClassesFetch = () => client.GET("/api/DanceClasses", {});
 
+export const saveNewDanceClass = (name: string) => {
+  const danceClassRequest = { name };
+
+  return client.POST("/api/DanceClasses", {
+    body: danceClassRequest,
+  });
+};

@@ -8,11 +8,42 @@ export default {
     colors:{
       'prim' : '#f7bb9b',
       'sec' : '#FDF0D5',
-      'third' : '#D3D3D3',  
+      'third': '#A0A0A0',  
+      'third-dark': '#557A8A',  
       'black' : '#000000',
-      'prim-dark': '#E5A989',
+      'prim-dark': '#D4887A',
+      'success': '#7FB069',
+      'success-dark': '#5C8C4D'
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        'fade-in-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        'fade-out-up': {
+          '0%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateY(-10px)'
+          },
+        }
+      },
+      animation: {
+        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        'fade-out-up': 'fade-out-up 0.5s ease-out'
+      }
+    },
+    
   },
   plugins: [],
 };

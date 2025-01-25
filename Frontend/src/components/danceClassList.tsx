@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { danceClassesFetch } from "../utils/danceClassFetch";
 import DanceClass from "./danceClass";
 import { DanceClassProp } from "../types/danceClassTypes";
+import CreateDanceClass from "./createDanceClass";
+import SuccessMessage from "./successMessage";
 
 const DanceClassList = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);
   const [fetchError, setFetchError] = useState<string | unknown>();
+  const [showCreateDanceClass, setShowCreateDanceClass] = useState(false);
+  const [refreshTrigger, setRefreshTrigger] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const getDanceClasses = async () => {
     try {
@@ -22,18 +27,43 @@ const DanceClassList = () => {
 
   useEffect(() => {
     getDanceClasses();
-  }, []);
+  }, [refreshTrigger]);
+
+  const handleCreateClass = () => {
+    setShowCreateDanceClass(!showCreateDanceClass);
+    setRefreshTrigger(!refreshTrigger);
+  };
+
+  const showTempCreatedMessage = (message: string) => {
+    setSuccessMessage(message);
+  };
 
   if (fetchError) {
     return <p>Error during fetching classes</p>;
   }
 
-  if (danceClasses.length == 0) {
-    return <p>No classes available</p>;
-  }
+  const renderCreateClassButton = () =>
+    !showCreateDanceClass && (
+      <button
+        className="bg-prim hover:bg-prim-dark text-black font-bold py-2 px-4 rounded"
+        onClick={handleCreateClass}
+      >
+        Create a new class
+      </button>
+    );
 
-  return (
-    <>
+  const renderCreateClassForm = () =>
+    showCreateDanceClass && (
+      <CreateDanceClass
+        handleCreateClass={handleCreateClass}
+        onClassCreated={(name) =>
+          showTempCreatedMessage(`${name} class added successfully!`)
+        }
+      />
+    );
+
+  const renderClassList = () => (
+    <div>
       <h2>Our Classes:</h2>
       <div>
         {danceClasses.map((danceClass) => (
@@ -44,7 +74,27 @@ const DanceClassList = () => {
           />
         ))}
       </div>
-    </>
+    </div>
+  );
+
+  return (
+    <div className="flex flex-col">
+      {renderCreateClassButton()}
+      {successMessage && (
+        <SuccessMessage
+          message={successMessage}
+          onClose={() => {
+            setSuccessMessage("");
+          }}
+        />
+      )}
+      {renderCreateClassForm()}
+      {danceClasses.length === 0 ? (
+        <p>No classes available</p>
+      ) : (
+        renderClassList()
+      )}
+    </div>
   );
 };
 

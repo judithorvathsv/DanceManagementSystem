@@ -4,6 +4,7 @@ const DanceClass = ({name, id}: DanceClassProp) => {
   return (
     <div>
       {name}
+      {id}
     </div>
   )
 }
