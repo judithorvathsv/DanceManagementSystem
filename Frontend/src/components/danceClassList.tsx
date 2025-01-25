@@ -70,6 +70,7 @@ const DanceClassList = () => {
   const renderClassList = () => (
     <div>
       {danceClasses.map((danceClass) => (
+         <div className="hover:bg-third/10 transition-colors duration-300">
         <DanceClass
           key={danceClass.id}
           id={danceClass.id}
@@ -81,46 +82,49 @@ const DanceClassList = () => {
             showTempSuccessMessage(`${name} class deleted successfully!`)
           }
         />
+           </div>
       ))}
     </div>
   );
 
   return (
-    <div className="container mx-auto px-4 bg-black py-12 max-w-7xl">
-      <div className="flex flex-col md:flex-row items-center mb-6">
-        {/* Mobile: under each other */}
-        <div className="w-full flex flex-col items-center md:hidden">
-          <h2 className="text-2xl font-bold mb-4">Our Classes</h2>
-          {renderCreateClassButton()}
-        </div>
-
-        {/* Desktop, tablet: next to each other */}
-        <div className="hidden md:flex md:w-full md:items-center">
-          <div className="w-1/3"></div>
-          <h2 className="text-2xl font-bold text-center w-1/3">Our Classes</h2>
-          <div className="w-1/3 flex justify-end">
+    <div className="bg-black">
+      <div className="container mx-auto px-4 py-12 max-w-8xl 2xl:border-x 2xl:border-third">
+        <div className="flex flex-col md:flex-row items-center mb-6 ">
+          {/* Mobile: under each other */}
+          <div className="w-full flex flex-col items-center md:hidden">
+          <h2 className="text-xl text-center font-semibold mb-4 mt-4">Our Classes</h2>  
             {renderCreateClassButton()}
           </div>
+
+          {/* Desktop, tablet: next to each other */}
+          <div className="hidden md:flex md:w-full md:items-center">
+            <div className="w-1/3"></div>
+            <h2 className="text-xl text-center font-semibold w-1/3 mb-4 mt-4">Our Classes</h2>          
+            <div className="w-1/3 flex justify-end">
+              {renderCreateClassButton()}
+            </div>
+          </div>
         </div>
+
+        {successMessage && (
+          <SuccessMessage
+            key={Date.now()}
+            message={successMessage}
+            onClose={() => {
+              setSuccessMessage("");
+            }}
+          />
+        )}
+
+        {renderCreateClassForm()}
+
+        {danceClasses.length === 0 ? (
+          <p>No classes available</p>
+        ) : (
+          renderClassList()
+        )}
       </div>
-
-      {successMessage && (
-        <SuccessMessage
-          key={Date.now()}
-          message={successMessage}
-          onClose={() => {
-            setSuccessMessage("");
-          }}
-        />
-      )}
-
-      {renderCreateClassForm()}
-
-      {danceClasses.length === 0 ? (
-        <p>No classes available</p>
-      ) : (
-        renderClassList()
-      )}
     </div>
   );
 };
