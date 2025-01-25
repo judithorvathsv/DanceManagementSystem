@@ -1,4 +1,5 @@
 using DanceApi.Data;
+using DanceApi.Dtos;
 using DanceApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,8 +49,22 @@ namespace DanceApi.Controllers
             return CreatedAtAction(nameof(Get), new { Id = danceClass.Id }, classDto);
         }
 
+        [HttpPatch("{id}")]
+        public ActionResult<DanceClassDto> Update(Guid id, DanceClassRequest request)
+        {
+            var classToUpdate = _context.Classes.FirstOrDefault(d => d.Id == id);
 
+            if (classToUpdate is null)
+            {
+                return NotFound();
+            }
 
+            classToUpdate.Name = request.Name;
+
+            _context.Classes.Update(classToUpdate);
+            _context.SaveChanges();
+            return Ok(Mapping.ClassToDto(classToUpdate));
+        }
 
     }
 }
