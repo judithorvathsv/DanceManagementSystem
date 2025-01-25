@@ -69,28 +69,41 @@ const DanceClassList = () => {
 
   const renderClassList = () => (
     <div>
-      <h2>Our Classes:</h2>
-      <div>
-        {danceClasses.map((danceClass) => (
-          <DanceClass
-            key={danceClass.id}
-            id={danceClass.id}
-            name={danceClass.name}
-            onClassUpdated={(name) =>
-              showTempSuccessMessage(`${name} class updated successfully!`)
-            }
-            onClassDeleted={(name) =>
-              showTempSuccessMessage(`${name} class deleted successfully!`)
-            }
-          />
-        ))}
-      </div>
+      {danceClasses.map((danceClass) => (
+        <DanceClass
+          key={danceClass.id}
+          id={danceClass.id}
+          name={danceClass.name}
+          onClassUpdated={(name) =>
+            showTempSuccessMessage(`${name} class updated successfully!`)
+          }
+          onClassDeleted={(name) =>
+            showTempSuccessMessage(`${name} class deleted successfully!`)
+          }
+        />
+      ))}
     </div>
   );
 
   return (
-    <div className="flex flex-col">
-      {renderCreateClassButton()}
+    <div className="container mx-auto px-4 bg-black py-12 max-w-7xl">
+      <div className="flex flex-col md:flex-row items-center mb-6">
+        {/* Mobile: under each other */}
+        <div className="w-full flex flex-col items-center md:hidden">
+          <h2 className="text-2xl font-bold mb-4">Our Classes</h2>
+          {renderCreateClassButton()}
+        </div>
+
+        {/* Desktop, tablet: next to each other */}
+        <div className="hidden md:flex md:w-full md:items-center">
+          <div className="w-1/3"></div>
+          <h2 className="text-2xl font-bold text-center w-1/3">Our Classes</h2>
+          <div className="w-1/3 flex justify-end">
+            {renderCreateClassButton()}
+          </div>
+        </div>
+      </div>
+
       {successMessage && (
         <SuccessMessage
           key={Date.now()}
@@ -100,7 +113,9 @@ const DanceClassList = () => {
           }}
         />
       )}
+
       {renderCreateClassForm()}
+
       {danceClasses.length === 0 ? (
         <p>No classes available</p>
       ) : (
