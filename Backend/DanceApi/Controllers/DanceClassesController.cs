@@ -27,7 +27,9 @@ namespace DanceApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DanceClass>> Get(Guid id)
         {
-            var danceClass = await _context.Classes.FirstOrDefaultAsync(c => c.Id == id);
+            var danceClass = await _context.Classes
+                                        .Include(c => c.Lections)
+                                        .FirstOrDefaultAsync(c => c.Id == id);
             if (danceClass is null)
             {
                 return NotFound();
@@ -70,8 +72,8 @@ namespace DanceApi.Controllers
         public IActionResult Delete(Guid id)
         {
             var classToDelete = _context.Classes
-         .Include(c => c.Lections)
-         .FirstOrDefault(d => d.Id == id);
+                                    .Include(c => c.Lections)
+                                    .FirstOrDefault(d => d.Id == id);
 
             if (classToDelete is null)
             {

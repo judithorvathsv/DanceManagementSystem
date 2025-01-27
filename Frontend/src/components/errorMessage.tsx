@@ -1,19 +1,32 @@
 import { useState, useEffect } from "react";
-import { SuccessMessageProps } from "../types/messageTypes";
+import { ErrorMessageProps } from "../types/messageTypes";
 
 const ErrorMessage = ({
   message,
   duration = 2500,
   onClose,
-}: SuccessMessageProps) => {
+}: ErrorMessageProps) => {
   const [isFadingOut, setIsFadingOut] = useState(false);
+
+  const errorText = (() => {
+    if (message instanceof Error) {
+      return message.message;
+    } else if (typeof message === 'string') {
+      return message;
+    } else if (message instanceof Object) {
+      return JSON.stringify(message);
+    } else if (message === undefined) {
+      return 'An unknown error occurred';
+    } else {
+      return String(message);
+    }
+  })();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsFadingOut(true);
       const fadeOutTimer = setTimeout(() => {
         onClose?.();
-   ;
       }, 500);
 
       return () => clearTimeout(fadeOutTimer);
@@ -47,7 +60,7 @@ const ErrorMessage = ({
                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <p className="font-semibold">{message}</p>
+            <p className="font-semibold">{errorText}</p>
           </div>
         </div>
       </div>

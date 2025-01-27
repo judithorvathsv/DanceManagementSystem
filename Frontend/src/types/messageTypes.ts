@@ -3,3 +3,9 @@ export type SuccessMessageProps = {
   duration?: number;
   onClose?: () => void;
 }
+
+export type ErrorMessageProps = {
+  message?: string | Error | unknown;
+  duration?: number;
+  onClose?: () => void;
+}

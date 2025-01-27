@@ -5,6 +5,13 @@ const client = createClient<paths>({ baseUrl: "http://localhost:5265/" });
 
 export const danceClassesFetch = () => client.GET("/api/DanceClasses", {});
 
+export const getOneDanceClassFetch = (id: string) =>
+  client.GET("/api/DanceClasses/{id}", {
+    params: {
+      path: { id: id },
+    },
+  });
+
 export const saveNewDanceClass = (name: string) => {
   const danceClassRequest = { name };
 
@@ -33,3 +40,5 @@ export const deleteClass = (id: string) =>
       query: undefined,
     },
   });
+
+

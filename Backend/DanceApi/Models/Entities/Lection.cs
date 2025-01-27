@@ -7,6 +7,8 @@ namespace DanceApi.Models
 
         public required string Name { get; set; }
 
+        // public required string Description {get; set;}
+
         public required Guid DanceClassId { get; set; }
 
         public virtual DanceClass DanceClass { get; set; }
