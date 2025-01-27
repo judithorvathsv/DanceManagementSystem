@@ -159,21 +159,24 @@ export interface components {
             /** Format: uuid */
             id?: string;
             name: string | null;
-            lections?: components["schemas"]["Lection"][] | null;
+            lectures?: components["schemas"]["Lecture"][] | null;
         };
         DanceClassDto: {
             /** Format: uuid */
             id?: string;
             name: string | null;
-            lections?: components["schemas"]["Lection"][] | null;
+            lectures?: components["schemas"]["Lecture"][] | null;
         };
         DanceClassRequest: {
             name: string | null;
         };
-        Lection: {
+        Lecture: {
             /** Format: uuid */
             id?: string;
             name: string | null;
+            description: string | null;
+            preparationVideoLink?: string | null;
+            lectionVideoLink?: string | null;
             /** Format: uuid */
             danceClassId: string;
             danceClass?: components["schemas"]["DanceClass"];

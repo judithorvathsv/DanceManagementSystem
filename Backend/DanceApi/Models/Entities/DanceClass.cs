@@ -6,6 +6,6 @@ namespace DanceApi.Models
 
         public required string Name {get; set;}        
         
-        public List<Lection> Lections {get; set;} = [];
+        public List<Lecture> Lectures {get; set;} = [];
     }
 }

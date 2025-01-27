@@ -11,7 +11,7 @@ namespace DanceApi
             {
                 Id = danceClass.Id,
                 Name = danceClass.Name,
-                Lections = danceClass.Lections
+                Lectures = danceClass.Lectures
             };
         }
 
@@ -21,7 +21,7 @@ namespace DanceApi
             {
                 Id = danceClassDto.Id,
                 Name = danceClassDto.Name,
-                Lections = danceClassDto.Lections
+                Lectures = danceClassDto.Lectures
             };
         }
     }

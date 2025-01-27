@@ -28,7 +28,7 @@ namespace DanceApi.Controllers
         public async Task<ActionResult<DanceClass>> Get(Guid id)
         {
             var danceClass = await _context.Classes
-                                        .Include(c => c.Lections)
+                                        .Include(c => c.Lectures)
                                         .FirstOrDefaultAsync(c => c.Id == id);
             if (danceClass is null)
             {
@@ -72,7 +72,7 @@ namespace DanceApi.Controllers
         public IActionResult Delete(Guid id)
         {
             var classToDelete = _context.Classes
-                                    .Include(c => c.Lections)
+                                    .Include(c => c.Lectures)
                                     .FirstOrDefault(d => d.Id == id);
 
             if (classToDelete is null)
@@ -80,9 +80,9 @@ namespace DanceApi.Controllers
                 return NotFound();
             }
 
-            if (classToDelete.Lections.Any())
+            if (classToDelete.Lectures.Any())
             {
-                return BadRequest("Cannot delete class because it has lections. Delete lections first.");
+                return BadRequest("Cannot delete class because it has lectures. Delete lectures first.");
             }
 
             _context.Classes.Remove(classToDelete);

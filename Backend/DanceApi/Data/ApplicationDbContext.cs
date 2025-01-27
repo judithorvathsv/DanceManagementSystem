@@ -12,12 +12,12 @@ namespace DanceApi.Data
 
         public DbSet<DanceClass> Classes { get; set; }
 
-        public DbSet<Lection> Lections { get; set; }
+        public DbSet<Lecture> Lectures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DanceClass>()
-            .HasMany(l => l.Lections)
+            .HasMany(l => l.Lectures)
             .WithOne(d => d.DanceClass)
             .HasForeignKey(d => d.DanceClassId)
             .OnDelete(DeleteBehavior.Cascade);
