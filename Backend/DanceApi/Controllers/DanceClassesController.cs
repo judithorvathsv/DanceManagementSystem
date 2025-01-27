@@ -20,7 +20,7 @@ namespace DanceApi.Controllers
         public async Task<ActionResult<IEnumerable<DanceClass>>> GetList()
         {
             var classes = await _context.Classes.ToListAsync();
-            var classesDtos = classes.Select(Mapping.ClassToDto).ToList();
+            var classesDtos = classes.Select(Mapping.DanceClassMapping.ClassToDto).ToList();
             return Ok(classesDtos);
         }
 
@@ -34,7 +34,7 @@ namespace DanceApi.Controllers
             {
                 return NotFound();
             }
-            return Ok(Mapping.ClassToDto(danceClass));
+            return Ok(Mapping.DanceClassMapping.ClassToDto(danceClass));
         }
 
         [HttpPost]
@@ -47,7 +47,7 @@ namespace DanceApi.Controllers
 
             await _context.Classes.AddAsync(danceClass);
             await _context.SaveChangesAsync();
-            var classDto = Mapping.ClassToDto(danceClass);
+            var classDto = Mapping.DanceClassMapping.ClassToDto(danceClass);
             return CreatedAtAction(nameof(Get), new { Id = danceClass.Id }, classDto);
         }
 
@@ -65,7 +65,7 @@ namespace DanceApi.Controllers
 
             _context.Classes.Update(classToUpdate);
             _context.SaveChanges();
-            return Ok(Mapping.ClassToDto(classToUpdate));
+            return Ok(Mapping.DanceClassMapping.ClassToDto(classToUpdate));
         }
 
         [HttpDelete("{id}")]

@@ -1,4 +1,5 @@
 using DanceApi.Models;
+using DanceApi.Models.Dtos;
 
 namespace DanceApi.Dtos
 {
@@ -8,6 +9,6 @@ namespace DanceApi.Dtos
 
         public required string Name { get; set; }
 
-        public List<Lecture> Lectures { get; set; } = [];
+        public List<LectureDto> Lectures { get; set; } = [];
     }
 }

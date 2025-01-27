@@ -151,6 +151,84 @@ export interface paths {
         };
         trace?: never;
     };
+    "/api/Lectures/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Lecture"];
+                        "application/json": components["schemas"]["Lecture"];
+                        "text/json": components["schemas"]["Lecture"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/Lectures": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["LectureRequest"];
+                    "text/json": components["schemas"]["LectureRequest"];
+                    "application/*+json": components["schemas"]["LectureRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -180,6 +258,14 @@ export interface components {
             /** Format: uuid */
             danceClassId: string;
             danceClass?: components["schemas"]["DanceClass"];
+        };
+        LectureRequest: {
+            name: string | null;
+            description: string | null;
+            preparationVideoLink?: string | null;
+            lectionVideoLink?: string | null;
+            /** Format: uuid */
+            danceClassId: string;
         };
     };
     responses: never;

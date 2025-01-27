@@ -9,6 +9,7 @@ import { components } from "../lib/api/v1";
 // }
 
 const DetailsDanceClass = () => {
+  console.log('1')
   const search = useSearch({ from: '/detailsDanceClass' })
   const id = search.id as string;
   const [danceClass, setDanceClass] = useState<components["schemas"]["DanceClass"]>();
@@ -17,15 +18,15 @@ const DetailsDanceClass = () => {
 console.log('ID Type:', typeof id);
 
 
+
+
 useEffect(() => {
   const fetchDanceClassDetails = async () => {
-    try {
-      if (id && id.length === 36) {
-        const response = await getOneDanceClassFetch(id); 
+    try { 
+        const response = await getOneDanceClassFetch(id);    
         if (response?.data) {
           setDanceClass(response.data);
-        }
-      }
+        }    
     } catch (error) {
       console.error("Error fetching dance class details:", error);
     }
@@ -42,12 +43,12 @@ useEffect(() => {
     <div className="bg-gray-100 p-8">
       <h2 className="text-3xl font-bold mb-4">{danceClass.name}</h2>
       <h3 className="text-2xl mb-2">Lections</h3>
-      {danceClass.lections && danceClass.lections.length > 0 ? (
+      {danceClass.lectures && danceClass.lectures.length > 0 ? (
         <ul>
-          {/* {danceClass.lections.map((lection: Lection, index: number) => (
+          {/* {danceClass.lectures.map((lecture: Lecture, index: number) => (
             <li key={index} className="mb-4">
-              <h4 className="text-xl font-semibold">{lection.name}</h4>
-              <p>{lection.description}</p>
+              <h4 className="text-xl font-semibold">{lecture.name}</h4>
+              <p>{lecture.description}</p>
             </li>
           ))} */}
         </ul>
