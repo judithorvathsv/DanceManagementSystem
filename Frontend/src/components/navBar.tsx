@@ -27,8 +27,8 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="flex flex-col">
-      <nav className="sticky top-0 flex flex-col 
+    <nav className="flex flex-col sticky top-0 ">
+      <div className="flex flex-col 
         sm:flex-row 
         justify-between 
         items-center 
@@ -159,9 +159,9 @@ const NavBar = () => {
             Login
           </Link>
         </div>
-      </nav>
+      </div>
       {fetchError != null && <ErrorMessage message={fetchError} />}
-    </div>
+    </nav>
   );
 };
 
