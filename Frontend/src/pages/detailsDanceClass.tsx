@@ -33,9 +33,20 @@ const DetailsDanceClass = () => {
     fetchDanceClassDetails();
   }, [id, fetchTrigger]);
 
+  useEffect(() => {
+    if (successMessage) {
+      window.scrollTo(0, 0);
+    }
+  }, [successMessage]);
+
   const handleCreateLecture = () => {
     setShowCreateLecture(!showCreateLecture);
     setFetchTrigger(!fetchTrigger);
+  };
+
+  const handleDeleteLecture = (lectureName: string) => {
+    setFetchTrigger(!fetchTrigger);
+    showTempSuccessMessage(`${lectureName} lecture deleted successfully.`);
   };
 
   const renderCreateLectureButton = () =>
@@ -72,7 +83,7 @@ const DetailsDanceClass = () => {
     <div className="bg-black p-8 items-center flex flex-col text-center min-h-screen">
       <h2 className="text-3xl font-bold mb-8">{danceClass.name}</h2>
 
-      <div className="w-full">
+      <div className="w-full max-w-8xl">
         {/* Mobile: under each other */}
         <div className="flex flex-col items-center md:hidden mb-12">
           <h3 className="text-2xl">All Lectures</h3>
@@ -104,7 +115,11 @@ const DetailsDanceClass = () => {
       {danceClass.lectures && danceClass.lectures.length > 0 ? (
         <ul className="space-y-6">
           {danceClass.lectures.map((lecture: LectureProps, index: number) => (
-            <Lecture lecture={lecture} index={index} />
+            <Lecture
+              lecture={lecture}
+              index={index}
+              handleDeleteLecture={handleDeleteLecture}
+            />
           ))}
         </ul>
       ) : (

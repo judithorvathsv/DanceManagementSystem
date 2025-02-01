@@ -3,7 +3,7 @@ import { SuccessMessageProps } from "../types/messageTypes";
 
 const SuccessMessage = ({
   message,
-  duration = 2500,
+  duration = 3500,
   onClose,
 }: SuccessMessageProps) => {
   const [isFadingOut, setIsFadingOut] = useState(false);

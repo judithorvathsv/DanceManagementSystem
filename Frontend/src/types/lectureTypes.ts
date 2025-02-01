@@ -6,7 +6,6 @@ export type YoutubeEmbedProps = {
 
 export type LectureProps = components["schemas"]["Lecture"];
 
-
 export type CreateLectureProp = {
   danceClassId: string;
   handleCreateLecture: () => void;
@@ -14,3 +13,9 @@ export type CreateLectureProp = {
 };
 
 export type LectureRequestProps = components["schemas"]["LectureRequest"];
+
+export type LectureDetailProps = {
+  lecture: LectureProps;
+  index: number;
+  handleDeleteLecture: (name: string) => void;
+};

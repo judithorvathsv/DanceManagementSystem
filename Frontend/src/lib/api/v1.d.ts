@@ -184,7 +184,26 @@ export interface paths {
         };
         put?: never;
         post?: never;
-        delete?: never;
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
         options?: never;
         head?: never;
         patch?: never;
@@ -243,7 +262,7 @@ export interface components {
             /** Format: uuid */
             id?: string;
             name: string | null;
-            lectures?: components["schemas"]["Lecture"][] | null;
+            lectures?: components["schemas"]["LectureDto"][] | null;
         };
         DanceClassRequest: {
             name: string | null;
@@ -258,6 +277,16 @@ export interface components {
             /** Format: uuid */
             danceClassId: string;
             danceClass?: components["schemas"]["DanceClass"];
+        };
+        LectureDto: {
+            /** Format: uuid */
+            id?: string;
+            name: string | null;
+            description: string | null;
+            preparationVideoLink?: string | null;
+            lectionVideoLink?: string | null;
+            /** Format: uuid */
+            danceClassId: string;
         };
         LectureRequest: {
             name: string | null;
