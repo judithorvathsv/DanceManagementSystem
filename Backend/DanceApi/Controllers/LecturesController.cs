@@ -46,5 +46,20 @@ namespace DanceApi.Controllers
             var lectureDto = Mapping.LectionMapping.LectureToDto(lecture);
             return CreatedAtAction(nameof(Get), new { Id = lecture.Id }, lectureDto);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var lectureToDelete = _context.Lectures.FirstOrDefault(d => d.Id == id);
+
+            if (lectureToDelete is null)
+            {
+                return NotFound();
+            }
+
+            _context.Lectures.Remove(lectureToDelete);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
