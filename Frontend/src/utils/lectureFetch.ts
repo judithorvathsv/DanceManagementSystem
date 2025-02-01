@@ -1,0 +1,11 @@
+import createClient from "openapi-fetch";
+import type { components, paths } from "../lib/api/v1";
+
+const client = createClient<paths>({ baseUrl: "http://localhost:5265/" });
+
+
+export const saveNewLecture = (lecture: components["schemas"]["LectureRequest"]) => {
+  return client.POST("/api/Lectures", {
+    body: lecture,
+  });
+};

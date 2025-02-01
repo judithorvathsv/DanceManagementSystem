@@ -96,7 +96,7 @@ const DanceClassList = () => {
         <div className="flex flex-col md:flex-row items-center mb-6 ">
           {/* Mobile: under each other */}
           <div className="w-full flex flex-col items-center md:hidden">
-            <h2 className="text-xl text-center font-semibold mb-4 mt-4">
+            <h2 className="text-3xl font-bold mb-8">
               Our Classes
             </h2>
             {renderCreateClassButton()}

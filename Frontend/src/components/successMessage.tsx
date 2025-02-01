@@ -18,7 +18,7 @@ const SuccessMessage = ({
     }, duration);
 
   return (
-    <div className="flex justify-center w-full mt-4">
+    <div className="flex justify-center w-full mt-4 mb-4">
       <div className="w-full max-w-sm">
         <div
           className={`

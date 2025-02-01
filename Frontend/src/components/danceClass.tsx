@@ -3,6 +3,7 @@ import { deleteClass, updateClass } from "../utils/danceClassFetch";
 import Button from "./button";
 import { useState } from "react";
 import ErrorMessage from "./errorMessage";
+import { useNavigate } from '@tanstack/react-router'
 
 const DanceClass = ({
   name,
@@ -10,6 +11,7 @@ const DanceClass = ({
   onClassUpdated,
   onClassDeleted,
 }: DanceClassProp) => {
+  const navigate = useNavigate();
   const [isUpdating, setIsUpdating] = useState(false);
   const [updatedName, setUpdatedName] = useState(name);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -61,6 +63,13 @@ const DanceClass = ({
       setErrorMessage("Failed to update class");
     }
   };
+
+  const handleShowLectures = () => {
+    navigate({
+      to: '/detailsDanceClass',
+      search: { id: id }, 
+    })
+  }
 
   const handleCancel = () => {
     setUpdatedName(name);
@@ -122,7 +131,10 @@ const DanceClass = ({
           ) : (
             <>
               <Button variant="primary" onClick={handleEdit}>
-                Edit
+                Edit Name
+              </Button>
+              <Button variant="secondary" onClick={handleShowLectures}>
+                Lectures
               </Button>
               <Button variant="secondary" onClick={handleDeleteInitiate}>
                 Delete
