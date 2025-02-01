@@ -3,7 +3,8 @@ import { deleteClass, updateClass } from "../utils/danceClassFetch";
 import Button from "./button";
 import { useState } from "react";
 import ErrorMessage from "./errorMessage";
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from "@tanstack/react-router";
+import DeleteModal from "./deleteModal";
 
 const DanceClass = ({
   name,
@@ -14,33 +15,40 @@ const DanceClass = ({
   const navigate = useNavigate();
   const [isUpdating, setIsUpdating] = useState(false);
   const [updatedName, setUpdatedName] = useState(name);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleEdit = () => {
     setIsUpdating(true);
   };
 
   const handleDeleteInitiate = () => {
-    setIsDeleting(true);
+    setShowDeleteModal(true);
+    const modal = document.getElementById(
+      `delete-modal-${id}`
+    ) as HTMLDialogElement;
+    if (modal) {
+      modal.showModal();
+    }
   };
 
   const handleDelete = async () => {
     try {
       await deleteClass(id);
       onClassDeleted?.(name);
-      setIsDeleting(false);
+      setShowDeleteModal(false);
+      const modal = document.getElementById(
+        `delete-modal-${id}`
+      ) as HTMLDialogElement;
+      if (showDeleteModal) {
+        modal.close();
+      }
     } catch (error) {
       console.error("Failed to delete class", error);
       setErrorMessage(
         "Failed to delete class. It may have associated lectures."
       );
-      setIsDeleting(false);
     }
-  };
-
-  const handleDeleteCancel = () => {
-    setIsDeleting(false);
   };
 
   const handleSave = async () => {
@@ -66,10 +74,10 @@ const DanceClass = ({
 
   const handleShowLectures = () => {
     navigate({
-      to: '/detailsDanceClass',
-      search: { id: id }, 
-    })
-  }
+      to: "/detailsDanceClass",
+      search: { id: id },
+    });
+  };
 
   const handleCancel = () => {
     setUpdatedName(name);
@@ -110,24 +118,6 @@ const DanceClass = ({
                 Cancel
               </Button>
             </div>
-          ) : isDeleting ? (
-            <div
-              className="flex flex-col items-center w-full  p-6   rounded-lg border border-third-dark
-            bg-gradient-to-b from-gray-800 to-gray-900
-            shadow-[0_0_10px_rgba(255,255,255,0.1),_0_0_20px_rgba(255,255,255,0.1),_0_0_30px_rgba(255,255,255,0.1)] "
-            >
-              <p className="mb-2 text-center text-error-dark font-semibold">
-                Do you want to delete {name}?
-              </p>
-              <div className="flex space-x-2">
-                <Button variant="error" onClick={handleDelete} className="mr-2">
-                  Confirm Delete
-                </Button>
-                <Button variant="secondary" onClick={handleDeleteCancel}>
-                  Cancel
-                </Button>
-              </div>
-            </div>
           ) : (
             <>
               <Button variant="primary" onClick={handleEdit}>
@@ -143,6 +133,23 @@ const DanceClass = ({
           )}
         </div>
       </div>
+
+      <DeleteModal
+        id={`delete-modal-${id}`}
+        title={`Delete ${name}`}
+        onConfirm={handleDelete}
+        onCancel={() => {
+          setShowDeleteModal(false);
+          const modal = document.getElementById(
+            `delete-modal-${id}`
+          ) as HTMLDialogElement;
+          if (modal) {
+            modal.close();
+          }
+        }}
+      >
+        <p>Are you sure you want to delete this class?</p>
+      </DeleteModal>
     </>
   );
 };

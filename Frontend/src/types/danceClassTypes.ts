@@ -12,6 +12,4 @@ export type CreateDanceClassProp = {
 
 export type CreateDanceClassNameProp = {
   name: string;
-}
-
-
+};
