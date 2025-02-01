@@ -9,3 +9,9 @@ export type CreateDanceClassProp = {
   handleCreateClass: () => void;
   onClassCreated?: (name: string) => void;
 };
+
+export type CreateDanceClassNameProp = {
+  name: string;
+}
+
+

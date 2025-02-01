@@ -1,65 +1,42 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { saveNewDanceClass } from "../utils/danceClassFetch";
 import Button from "./button";
-import { CreateDanceClassProp } from "../types/danceClassTypes";
+import {
+  CreateDanceClassNameProp,
+  CreateDanceClassProp,
+} from "../types/danceClassTypes";
 
 const CreateDanceClass = ({
   handleCreateClass,
   onClassCreated,
 }: CreateDanceClassProp) => {
-  const [formData, setFormData] = useState({ name: "" });
-  const [errors, setErrors] = useState({ name: "" });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreateDanceClassNameProp>({
+    defaultValues: {
+      name: "",
+    },
+  });
 
   const [submitError, setSubmitError] = useState("");
+
+  const onSubmit = async (data: CreateDanceClassNameProp) => {
+    try {
+      await saveNewDanceClass(data.name);
+      onClassCreated?.(data.name);
+      handleCreateClass();
+    } catch (error) {
+      console.error("Error saving class:", error);
+      setSubmitError("Error saving class. Try again");
+    }
+  };
 
   const handleCancel = () => {
     handleCreateClass();
   };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = { name: "" };
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-      try {
-        saveNewDanceClass(formData.name);
-        onClassCreated?.(formData.name);
-        handleCreateClass();
-      } catch (error) {
-        console.error("Error saving class:", error);
-        setSubmitError("Failed to create class. Please try again.");
-      }
-    }
-  };
-
-  if (submitError)
-    return (
-      <div>
-        Error loading classes:
-        {typeof submitError === "string" ? submitError : "An error occurred"}
-      </div>
-    );
 
   return (
     <div
@@ -67,26 +44,30 @@ const CreateDanceClass = ({
             bg-gradient-to-b from-gray-800 to-gray-900
             shadow-[0_0_10px_rgba(255,255,255,0.1),_0_0_20px_rgba(255,255,255,0.1),_0_0_30px_rgba(255,255,255,0.1)]"
     >
+      {submitError && <div className="text-error mb-4">{submitError}</div>}
+
       <h2 className="text-2xl font-bold mb-6 text-center">Create New Class</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex items-center space-x-2">
-          <label htmlFor="name" className="whitespace-nowrap">
+          <label htmlFor="name" className="mb-4">
             Name:
           </label>
           <div className="flex-grow">
-            <input
-              className="text-black w-full px-2 py-1 rounded"
-              type="text"
-              id="name"
+            <Controller
               name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
+              control={control}
+              rules={{ required: "Name is required" }}
+              render={({ field }) => (
+                <input
+                  {...field}
+                  className="text-black w-full px-2 py-1 rounded mb-4"
+                  type="text"
+                  id="name"
+                />
+              )}
             />
             {errors.name && (
-              <span className="error text-red-500 text-xs mt-1">
-                {errors.name}
-              </span>
+              <span className="error text-error">{errors.name.message}</span>
             )}
           </div>
         </div>
