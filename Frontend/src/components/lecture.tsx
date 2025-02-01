@@ -1,5 +1,5 @@
 import { LectureProps } from "../types/lectureTypes";
-import YoutubeEmbed from "./YoutubeEmbed ";
+import YoutubeEmbed from "./youtubeEmbed ";
 
 const Lecture = ({
   lecture,
