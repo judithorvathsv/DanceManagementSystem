@@ -1,9 +1,10 @@
 using DanceApi.Models;
 using DanceApi.Models.Dtos;
+using DanceApi.Models.Requests;
 
 namespace DanceApi.Mapping
 {
-    public static class LectionMapping
+    public static class LectureMapping
     {
         public static LectureDto LectureToDto(Lecture lecture)
         {
@@ -29,6 +30,16 @@ namespace DanceApi.Mapping
                 LectionVideoLink = lectureDto.LectionVideoLink,
                 DanceClassId = lectureDto.DanceClassId
             };
+        }
+
+        public static Lecture LectureUpdateRequestToLecture(LectureUpdateRequest request, Lecture lectureToUpdate)
+        {
+            lectureToUpdate.Name = string.IsNullOrWhiteSpace(request.Name) ? lectureToUpdate.Name : request.Name;
+            lectureToUpdate.Description = string.IsNullOrWhiteSpace(request.Description) ? lectureToUpdate.Description : request.Description;
+            lectureToUpdate.PreparationVideoLink = string.IsNullOrWhiteSpace(request.PreparationVideoLink) ? lectureToUpdate.PreparationVideoLink : request.PreparationVideoLink;
+            lectureToUpdate.LectionVideoLink = string.IsNullOrWhiteSpace(request.LectionVideoLink) ? lectureToUpdate.LectionVideoLink : request.LectionVideoLink;
+
+            return lectureToUpdate;
         }
     }
 
