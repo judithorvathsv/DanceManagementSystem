@@ -34,10 +34,10 @@ namespace DanceApi.Mapping
 
         public static Lecture LectureUpdateRequestToLecture(LectureUpdateRequest request, Lecture lectureToUpdate)
         {
-            lectureToUpdate.Name = string.IsNullOrWhiteSpace(request.Name) ? lectureToUpdate.Name : request.Name;
-            lectureToUpdate.Description = string.IsNullOrWhiteSpace(request.Description) ? lectureToUpdate.Description : request.Description;
-            lectureToUpdate.PreparationVideoLink = string.IsNullOrWhiteSpace(request.PreparationVideoLink) ? lectureToUpdate.PreparationVideoLink : request.PreparationVideoLink;
-            lectureToUpdate.LectionVideoLink = string.IsNullOrWhiteSpace(request.LectionVideoLink) ? lectureToUpdate.LectionVideoLink : request.LectionVideoLink;
+            lectureToUpdate.Name = request.Name;
+            lectureToUpdate.Description = request.Description;
+            lectureToUpdate.PreparationVideoLink = request.PreparationVideoLink;
+            lectureToUpdate.LectionVideoLink = request.LectionVideoLink;
 
             return lectureToUpdate;
         }
