@@ -50,7 +50,7 @@ const UpdateLecture = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
           <label
             htmlFor="name"
-            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0"
+            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start"
           >
             Name:
           </label>
@@ -81,7 +81,7 @@ const UpdateLecture = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
           <label
             htmlFor="description"
-            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0"
+            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start"
           >
             Description:
           </label>
@@ -111,7 +111,7 @@ const UpdateLecture = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
           <label
             htmlFor="preparationVideoLink"
-            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0"
+            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start"
           >
             Preparation Video Link:
           </label>
@@ -136,7 +136,7 @@ const UpdateLecture = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
           <label
             htmlFor="lectionVideoLink"
-            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0"
+            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start"
           >
             Lection Video Link:
           </label>
@@ -158,7 +158,7 @@ const UpdateLecture = ({
           </div>
         </div>
 
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between mt-4 pt-4">
           <Button type="submit" variant="primary">
             Save
           </Button>

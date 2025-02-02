@@ -40,7 +40,7 @@ const CreateDanceClass = ({
 
   return (
     <div
-      className="mb-4 w-full max-w-sm mx-auto p-6 rounded-lg border border-third-dark
+      className="m-4 mt-0 mb-8 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 max-w-2xl mx-auto p-6 rounded-lg border border-third-dark
             bg-gradient-to-b from-gray-800 to-gray-900
             shadow-[0_0_10px_rgba(255,255,255,0.1),_0_0_20px_rgba(255,255,255,0.1),_0_0_30px_rgba(255,255,255,0.1)]"
     >
@@ -49,7 +49,7 @@ const CreateDanceClass = ({
       <h2 className="text-2xl font-bold mb-6 text-center">Create New Class</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex items-center space-x-2">
-          <label htmlFor="name" className="mb-4">
+          <label htmlFor="name" className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start">
             Name:
           </label>
           <div className="flex-grow">

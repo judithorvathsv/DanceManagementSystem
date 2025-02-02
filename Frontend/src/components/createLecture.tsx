@@ -57,7 +57,7 @@ const CreateLecture = ({
 
   return (
     <div
-      className="m-4 mt-0 mb-8 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 max-w-2xl mx-auto p-6 rounded-lg border border-third-dark
+      className="m-4 mt-2 sm:mt-0 mb-8 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 max-w-2xl mx-auto p-6 rounded-lg border border-third-dark
             bg-gradient-to-b from-gray-800 to-gray-900
             shadow-[0_0_10px_rgba(255,255,255,0.1),_0_0_20px_rgba(255,255,255,0.1),_0_0_30px_rgba(255,255,255,0.1)]"
     >
@@ -74,7 +74,7 @@ const CreateLecture = ({
           >
             <label
               htmlFor={key}
-              className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0"
+              className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start"
             >
               {label}:
             </label>
@@ -116,7 +116,7 @@ const CreateLecture = ({
           </div>
         ))}
 
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between mt-4 pt-4">
           <Button type="submit" variant="primary">
             Save
           </Button>

@@ -42,10 +42,10 @@ const UpdateClass: React.FC<UpdateClassFormProps> = ({
     <div className="w-full">
       {submitError && <div className="text-error mb-4">{submitError}</div>}
       <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-8">
           <label
             htmlFor="name"
-            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0"
+            className="whitespace-nowrap sm:w-1/3 mb-1 sm:mb-0 flex justify-start"
           >
             Class Name:
           </label>

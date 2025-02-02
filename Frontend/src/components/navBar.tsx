@@ -36,20 +36,21 @@ const NavBar = () => {
         bg-main">
         
         {/* Mobile: First Row - Logo and Title */}
-        <div className="flex w-full justify-center items-center 
+        <div className="w-full justify-center items-center 
           sm:w-auto 
           sm:absolute 
           sm:left-1/2 
           sm:transform 
           sm:-translate-x-1/2 
           mb-4 
-          sm:mb-0">
+          sm:mb-0
+          flex">
           <img
             src="/public/images/logo2.png"
             alt="logo"
-            className="h-16 w-auto mr-2"
+            className="h-16 w-auto mb-2 sm:mb-0 sm:mr-2"
           />
-          <h1 className="text-xl font-bold">Dance Management System</h1>
+          <h1 className="text-xl font-bold text-center sm:text-left">Dance Management System</h1>
         </div>
 
         {/* Mobile: Second Row - Home and Classes*/}

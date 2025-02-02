@@ -57,7 +57,7 @@ const DetailsDanceClass = () => {
   const renderCreateLectureButton = () =>
     !showCreateLecture && (
       <button
-        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 rounded"
+        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 sm:mt-0 rounded"
         onClick={handleCreateLecture}
       >
         Create a new lecture
@@ -90,13 +90,13 @@ const DetailsDanceClass = () => {
 
       <div className="w-full max-w-8xl">
         {/* Mobile: under each other */}
-        <div className="flex flex-col items-center md:hidden mb-12">
+        <div className="flex flex-col items-center md:hidden mb-6 sm:mb-12">
           <h3 className="text-2xl">All Lectures</h3>
           {renderCreateLectureButton()}
         </div>
 
         {/* Desktop, tablet: next to each other */}
-        <div className="hidden md:flex md:items-center md:justify-between mb-12">
+        <div className="hidden md:flex md:items-center md:justify-between mb-6 sm:mb-12">
           <div className="w-1/3"></div>
           <h3 className="text-2xl text-center w-1/3">All Lectures</h3>
           <div className="w-1/3 flex justify-end">

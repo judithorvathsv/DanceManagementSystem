@@ -52,7 +52,7 @@ const DanceClassList = () => {
   const renderCreateClassButton = () =>
     !showCreateDanceClass && (
       <button
-        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 rounded"
+        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 md:mt-2 rounded"
         onClick={handleCreateClass}
       >
         Create a new class
@@ -73,7 +73,7 @@ const DanceClassList = () => {
     <div className="bg-black p-8 items-center flex flex-col text-center min-h-screen">
       <h2 className="text-3xl font-bold mb-8">Our Classes</h2>
 
-      <div className="bg-main p-12 w-full max-w-8xl border border-prim rounded-lg mt-4">
+      <div className="bg-main p-4 md:p-12 w-[110%] md:w-full max-w-8xl border border-prim rounded-lg mt-4">
         <div className="w-full max-w-8xl">
           {!showCreateDanceClass && (
             <>
@@ -110,7 +110,7 @@ const DanceClassList = () => {
             No classes available
           </p>
         ) : (
-          <ul className="space-y-6 w-full max-w-8xl">
+          <ul className="space-y-6 w-full max-w-8xl px-2 sm:px-4 md:px-0 ">
             {danceClasses.map((danceClass) => (
               <DanceClass
                 key={danceClass.id}

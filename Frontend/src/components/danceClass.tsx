@@ -95,7 +95,11 @@ const DanceClass = ({
           }}
         />
       )}
+
       <li className="w-full mx-auto bg-main rounded-lg overflow-hidden border-2 border-prim shadow-lg shadow-prim/20 mb-6">
+
+
+      
         <div className="bg-gradient-to-r from-prim to-prim-dark hover:from-prim-dark hover:to-prim p-4 transition-all duration-300 ease-in-out">
           <div className="flex flex-col sm:flex-row items-center justify-between">
             <h4 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-0 w-full sm:w-1/3 text-black text-center sm:text-left">
