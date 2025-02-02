@@ -40,7 +40,7 @@ const CreateDanceClass = ({
 
   return (
     <div
-      className="mt-4 w-full max-w-sm mx-auto p-6 rounded-lg border border-third-dark
+      className="mb-4 w-full max-w-sm mx-auto p-6 rounded-lg border border-third-dark
             bg-gradient-to-b from-gray-800 to-gray-900
             shadow-[0_0_10px_rgba(255,255,255,0.1),_0_0_20px_rgba(255,255,255,0.1),_0_0_30px_rgba(255,255,255,0.1)]"
     >

@@ -73,18 +73,22 @@ const DanceClassList = () => {
 
       <div className="bg-main p-12 w-full max-w-8xl border border-prim rounded-lg mt-4">
         <div className="w-full max-w-8xl">
-          {/* Mobile: under each other */}
-          <div className="flex flex-col items-center md:hidden mb-12">
-            {renderCreateClassButton()}
-          </div>
+          {!showCreateDanceClass && (
+            <>
+              {/* Mobile: under each other */}
+              <div className="flex flex-col items-center md:hidden mb-12">
+                {renderCreateClassButton()}
+              </div>
 
-          {/* Desktop, tablet: next to each other */}
-          <div className="hidden md:flex md:items-center md:justify-between mb-12">
-            <div className="w-1/3"></div>
-            <div className="w-1/3 flex justify-end">
-              {renderCreateClassButton()}
-            </div>
-          </div>
+              {/* Desktop, tablet: next to each other */}
+              <div className="hidden md:flex md:items-center md:justify-between mb-12">
+                <div className="w-1/3"></div>
+                <div className="w-1/3 flex justify-end">
+                  {renderCreateClassButton()}
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {successMessage && (
