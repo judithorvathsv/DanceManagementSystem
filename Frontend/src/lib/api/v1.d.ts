@@ -277,6 +277,85 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/Users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["UserRequest"];
+                    "text/json": components["schemas"]["UserRequest"];
+                    "application/*+json": components["schemas"]["UserRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/Users/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    email?: string;
+                    password?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": string;
+                        "application/json": string;
+                        "text/json": string;
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -330,6 +409,17 @@ export interface components {
             description: string | null;
             preparationVideoLink?: string | null;
             lectionVideoLink?: string | null;
+        };
+        /**
+         * Format: int32
+         * @enum {integer}
+         */
+        Role: 0 | 1;
+        UserRequest: {
+            name: string | null;
+            email: string | null;
+            password: string | null;
+            role?: components["schemas"]["Role"];
         };
     };
     responses: never;

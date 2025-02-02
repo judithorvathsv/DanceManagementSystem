@@ -12,6 +12,11 @@ const Register = () => {
         {isRegisterPage ? "Register" : "Join here:"}
       </h2>
       <form className="flex flex-col space-y-4 p-6">
+      <input
+          type="text"
+          placeholder="Name"
+          className="p-2 border rounded text-black"
+        />
         <input
           type="email"
           placeholder="Email"

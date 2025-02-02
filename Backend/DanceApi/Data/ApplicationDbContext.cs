@@ -1,5 +1,6 @@
 
 using DanceApi.Models;
+using DanceApi.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DanceApi.Data
@@ -13,6 +14,9 @@ namespace DanceApi.Data
         public DbSet<DanceClass> Classes { get; set; }
 
         public DbSet<Lecture> Lectures { get; set; }
+
+        public DbSet<User> Users {get; set;}
+             
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\csharp\\20250120Dance\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\mapping\\danceclassmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\mapping\\danceclassmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\mapping\\usermapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\mapping\\usermapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\models\\dtos\\danceclassdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\controllers\\lecturescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\controllers\\lecturescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\mapping\\lectionmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\mapping\\lectionmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,20 +34,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DanceClassMapping.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\DanceClassMapping.cs",
-              "RelativeDocumentMoniker": "Backend\\DanceApi\\Mapping\\DanceClassMapping.cs",
-              "ToolTip": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\DanceClassMapping.cs*",
-              "RelativeToolTip": "Backend\\DanceApi\\Mapping\\DanceClassMapping.cs*",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAswCUAAAATAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserMapping.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\UserMapping.cs",
+              "RelativeDocumentMoniker": "Backend\\DanceApi\\Mapping\\UserMapping.cs",
+              "ToolTip": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\UserMapping.cs",
+              "RelativeToolTip": "Backend\\DanceApi\\Mapping\\UserMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T19:22:28.216Z",
+              "WhenOpened": "2025-02-02T16:29:34.271Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Backend\\DanceApi\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Backend\\DanceApi\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T16:27:17.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "DanceClassDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Models\\Dtos\\DanceClassDto.cs",
               "RelativeDocumentMoniker": "Backend\\DanceApi\\Models\\Dtos\\DanceClassDto.cs",
@@ -55,24 +68,11 @@
               "RelativeToolTip": "Backend\\DanceApi\\Models\\Dtos\\DanceClassDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T19:21:57.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T19:21:57.621Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LectionMapping.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\LectionMapping.cs",
-              "RelativeDocumentMoniker": "Backend\\DanceApi\\Mapping\\LectionMapping.cs",
-              "ToolTip": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\LectionMapping.cs",
-              "RelativeToolTip": "Backend\\DanceApi\\Mapping\\LectionMapping.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T18:38:30.166Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "LecturesController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Controllers\\LecturesController.cs",
               "RelativeDocumentMoniker": "Backend\\DanceApi\\Controllers\\LecturesController.cs",
@@ -80,8 +80,7 @@
               "RelativeToolTip": "Backend\\DanceApi\\Controllers\\LecturesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T18:34:07.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T18:34:07.587Z"
             }
           ]
         }
