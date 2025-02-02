@@ -82,7 +82,7 @@ namespace DanceApi.Controllers
 
             if (classToDelete.Lectures.Any())
             {
-                return BadRequest("Cannot delete class because it has lectures. Delete lectures first.");
+                return BadRequest(new { message = "Cannot delete class because it has lectures. Delete lectures first." });
             }
 
             _context.Classes.Remove(classToDelete);

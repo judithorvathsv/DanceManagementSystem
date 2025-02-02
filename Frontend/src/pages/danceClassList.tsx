@@ -40,7 +40,9 @@ const DanceClassList = () => {
 
   const showTempSuccessMessage = (message: string) => {
     setSuccessMessage(message);
+
     setRefreshTrigger(!refreshTrigger);
+    setTimeout(() => setSuccessMessage(""), 2500);
   };
 
   if (fetchError) {

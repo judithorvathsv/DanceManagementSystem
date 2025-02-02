@@ -3,7 +3,7 @@ import { ErrorMessageProps } from "../types/messageTypes";
 
 const ErrorMessage = ({
   message,
-  duration = 2500,
+  duration = 3500,
   onClose,
 }: ErrorMessageProps) => {
   const [isFadingOut, setIsFadingOut] = useState(false);

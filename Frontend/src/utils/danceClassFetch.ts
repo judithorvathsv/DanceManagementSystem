@@ -33,12 +33,19 @@ export const updateClass = (id: string, name: string) => {
   });
 };
 
-export const deleteClass = (id: string) =>
-  client.DELETE("/api/DanceClasses/{id}", {
+type DeleteResponse = {
+  error?: { message: string };
+  response: Response;
+};
+
+export const deleteClass = async (id: string): Promise<void> => {
+  const response = (await client.DELETE("/api/DanceClasses/{id}", {
     params: {
-      path: { id: id },
-      query: undefined,
+      path: { id },
     },
-  });
+  })) as DeleteResponse;
 
-
+  if (response.error) {
+    throw new Error(response.error.message || "Failed to delete class");
+  }
+};
