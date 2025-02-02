@@ -10,7 +10,7 @@ export default {
       'main': '#242424',
       'prim' : '#f7bb9b',
       'third': '#A0A0A0',  
-      'third-dark': '#557A8A',  
+      'third-dark': '#787878',  
       'black' : '#000000',
       'prim-dark': '#D4887A',
       'success': '#7FB069',

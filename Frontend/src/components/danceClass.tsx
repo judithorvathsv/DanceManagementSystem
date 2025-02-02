@@ -85,7 +85,7 @@ const DanceClass = ({
   };
 
   return (
-    <>
+    <li className="w-full mx-auto bg-main rounded-lg overflow-hidden border-2 border-prim shadow-lg shadow-prim/20 mb-6">
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -95,42 +95,66 @@ const DanceClass = ({
         />
       )}
 
-      <div className="flex max-sm:flex-col items-center justify-between p-4 border-b border-third hover:bg-third/10 transition-colors duration-300 cursor-pointer">
-        {isUpdating ? (
-          <input
-            type="text"
-            value={updatedName}
-            placeholder={name}
-            onChange={(e) => setUpdatedName(e.target.value)}
-            className="border rounded px-2 py-1 mr-2 flex-grow text-black"
-          />
-        ) : (
-          <span>{name}</span>
-        )}
-
-        <div className={`space-x-2 flex items-center max-sm:mt-2`}>
+      <div className="bg-gradient-to-r from-prim to-prim-dark hover:from-prim-dark hover:to-prim p-4 transition-all duration-300 ease-in-out">
+        <div className="flex flex-col sm:flex-row items-center justify-between">
           {isUpdating ? (
-            <div className="flex space-x-2 items-center">
-              <Button variant="primary" onClick={handleSave}>
-                Save
-              </Button>
-              <Button variant="secondary" onClick={handleCancel}>
-                Cancel
-              </Button>
-            </div>
+            <input
+              type="text"
+              value={updatedName}
+              placeholder={name}
+              onChange={(e) => setUpdatedName(e.target.value)}
+              className="border rounded px-2 py-1 mr-2 flex-grow text-black w-full sm:w-1/3"
+            />
           ) : (
-            <>
-              <Button variant="primary" onClick={handleEdit}>
-                Edit Name
-              </Button>
-              <Button variant="secondary" onClick={handleShowLectures}>
-                Lectures
-              </Button>
-              <Button variant="secondary" onClick={handleDeleteInitiate}>
-                Delete
-              </Button>
-            </>
+            <h4 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-0 w-full sm:w-1/3 text-black text-center sm:text-left">
+              {name}
+            </h4>
           )}
+
+          <div className="flex space-x-2 w-full sm:w-2/3 justify-center sm:justify-end">
+            {isUpdating ? (
+              <>
+                <Button
+                  variant="update"
+                  onClick={handleSave}
+                  className="text-sm"
+                >
+                  Save
+                </Button>
+                <Button
+                  variant="delete"
+                  onClick={handleCancel}
+                  className="text-sm"
+                >
+                  Cancel
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  variant="update"
+                  onClick={handleEdit}
+                  className="text-sm"
+                >
+                  Update Class
+                </Button>
+                <Button
+                  variant="update"
+                  onClick={handleShowLectures}
+                  className="text-sm"
+                >
+                  Lectures
+                </Button>
+                <Button
+                  variant="delete"
+                  onClick={handleDeleteInitiate}
+                  className="text-sm"
+                >
+                  Delete
+                </Button>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -150,7 +174,7 @@ const DanceClass = ({
       >
         <p>Are you sure you want to delete this class?</p>
       </DeleteModal>
-    </>
+    </li>
   );
 };
 

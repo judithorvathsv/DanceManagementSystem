@@ -50,7 +50,7 @@ const DanceClassList = () => {
   const renderCreateClassButton = () =>
     !showCreateDanceClass && (
       <button
-        className="bg-prim hover:bg-prim-dark text-black font-bold py-2 px-4 rounded"
+        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 rounded"
         onClick={handleCreateClass}
       >
         Create a new class
@@ -67,45 +67,20 @@ const DanceClassList = () => {
       />
     );
 
-  const renderClassList = () => (
-    <div>
-      {danceClasses.map((danceClass) => (
-        <div
-          key={danceClass.id}
-          className="hover:bg-third/10 transition-colors duration-300"
-        >
-          <DanceClass
-            key={danceClass.id}
-            id={danceClass.id}
-            name={danceClass.name}
-            onClassUpdated={(name) =>
-              showTempSuccessMessage(`${name} class updated successfully!`)
-            }
-            onClassDeleted={(name) =>
-              showTempSuccessMessage(`${name} class deleted successfully!`)
-            }
-          />
-        </div>
-      ))}
-    </div>
-  );
-
   return (
-    <div className="bg-black">
-      <div className="container mx-auto px-4 py-12 max-w-8xl 2xl:border-x 2xl:border-third">
-        <div className="flex flex-col md:flex-row items-center mb-6 ">
+    <div className="bg-black p-8 items-center flex flex-col text-center min-h-screen">
+      <h2 className="text-3xl font-bold mb-8">Our Classes</h2>
+
+      <div className="bg-main p-12 w-full max-w-8xl border border-prim rounded-lg mt-4">
+        <div className="w-full max-w-8xl">
           {/* Mobile: under each other */}
-          <div className="w-full flex flex-col items-center md:hidden">
-            <h2 className="text-3xl font-bold mb-8">Our Classes</h2>
+          <div className="flex flex-col items-center md:hidden mb-12">
             {renderCreateClassButton()}
           </div>
 
           {/* Desktop, tablet: next to each other */}
-          <div className="hidden md:flex md:w-full md:items-center">
+          <div className="hidden md:flex md:items-center md:justify-between mb-12">
             <div className="w-1/3"></div>
-            <h2 className="text-xl text-center font-semibold w-1/3 mb-4 mt-4">
-              Our Classes
-            </h2>
             <div className="w-1/3 flex justify-end">
               {renderCreateClassButton()}
             </div>
@@ -125,9 +100,25 @@ const DanceClassList = () => {
         {renderCreateClassForm()}
 
         {danceClasses.length === 0 ? (
-          <p>No classes available</p>
+          <p className="text-center text-gray-500 italic">
+            No classes available
+          </p>
         ) : (
-          renderClassList()
+          <ul className="space-y-6 w-full max-w-8xl">
+            {danceClasses.map((danceClass) => (
+              <DanceClass
+                key={danceClass.id}
+                id={danceClass.id}
+                name={danceClass.name}
+                onClassUpdated={(name) =>
+                  showTempSuccessMessage(`${name} class updated successfully!`)
+                }
+                onClassDeleted={(name) =>
+                  showTempSuccessMessage(`${name} class deleted successfully!`)
+                }
+              />
+            ))}
+          </ul>
         )}
       </div>
     </div>

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { LectureDetailProps } from "../types/lectureTypes";
 import { deleteLecture } from "../utils/lectureFetch";
 import DeleteModal from "./deleteModal";
-import YoutubeEmbed from "./YoutubeEmbed ";
+import YoutubeEmbed from "./youtubeEmbed";
+import Button from "./button";
 
 const Lecture = ({
   lecture,
@@ -35,24 +36,25 @@ const Lecture = ({
       key={lecture.id}
       className="w-[95vw] max-w-8xl mx-auto bg-main rounded-lg overflow-hidden border-2 border-prim shadow-lg shadow-prim/20 mb-16"
     >
-      <div className="bg-gradient-to-r from-prim to-prim-dark text-black p-6">
+      <div className="bg-gradient-to-r from-prim to-prim-dark p-6">
         {submitError && <div className="text-error mb-4">{submitError}</div>}
 
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <div className="w-full sm:w-1/4"></div>
-          <h4 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-0 w-full sm:w-1/2">
+          <h4 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-0 w-full sm:w-1/2 text-black">
             Lecture {index + 1}: {lecture.name}
           </h4>
           <div className="flex space-x-2 w-full sm:w-1/4 justify-center sm:justify-end">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-              Edit
-            </button>
-            <button
+            <Button variant="update" className="text-sm">
+              Update
+            </Button>
+            <Button
+              variant="delete"
               onClick={openDeleteModal}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-sm"
+              className="text-sm"
             >
               Delete
-            </button>
+            </Button>
           </div>
         </div>
       </div>
