@@ -18,3 +18,15 @@ export const deleteLecture = (id: string) =>
       query: undefined,
     },
   });
+
+export const editLecture = (
+  lectureRequest: components["schemas"]["LectureUpdateRequest"],
+  id: string
+) => {
+  return client.PATCH("/api/Lectures/{id}", {
+    params: {
+      path: { id: id.toString() },
+    },
+    body: lectureRequest,
+  });
+};

@@ -49,6 +49,11 @@ const DetailsDanceClass = () => {
     showTempSuccessMessage(`${lectureName} lecture deleted successfully.`);
   };
 
+  const handleUpdateLecture = (lectureName: string) => {
+    setFetchTrigger(!fetchTrigger);
+    showTempSuccessMessage(`${lectureName} lecture updated successfully.`);
+  };
+
   const renderCreateLectureButton = () =>
     !showCreateLecture && (
       <button
@@ -119,6 +124,7 @@ const DetailsDanceClass = () => {
               lecture={lecture}
               index={index}
               handleDeleteLecture={handleDeleteLecture}
+              handleUpdateLecture={handleUpdateLecture}
             />
           ))}
         </ul>

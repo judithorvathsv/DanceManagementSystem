@@ -206,7 +206,36 @@ export interface paths {
         };
         options?: never;
         head?: never;
-        patch?: never;
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["LectureUpdateRequest"];
+                    "text/json": components["schemas"]["LectureUpdateRequest"];
+                    "application/*+json": components["schemas"]["LectureUpdateRequest"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["LectureDto"];
+                        "application/json": components["schemas"]["LectureDto"];
+                        "text/json": components["schemas"]["LectureDto"];
+                    };
+                };
+            };
+        };
         trace?: never;
     };
     "/api/Lectures": {
@@ -295,6 +324,12 @@ export interface components {
             lectionVideoLink?: string | null;
             /** Format: uuid */
             danceClassId: string;
+        };
+        LectureUpdateRequest: {
+            name: string | null;
+            description: string | null;
+            preparationVideoLink?: string | null;
+            lectionVideoLink?: string | null;
         };
     };
     responses: never;

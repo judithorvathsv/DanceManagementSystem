@@ -4,13 +4,17 @@ import { deleteLecture } from "../utils/lectureFetch";
 import DeleteModal from "./deleteModal";
 import YoutubeEmbed from "./youtubeEmbed";
 import Button from "./button";
+import UpdateModal from "./updateModal";
+import UpdateLecture from "./updateLecture";
 
 const Lecture = ({
   lecture,
   index,
   handleDeleteLecture,
+  handleUpdateLecture,
 }: LectureDetailProps) => {
   const [submitError, setSubmitError] = useState("");
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   const openDeleteModal = () => {
     const modal = document.getElementById(
@@ -31,6 +35,10 @@ const Lecture = ({
     }
   };
 
+  const handleUpdate = async () => {
+    setShowUpdateModal(true);
+  };
+
   return (
     <li
       key={lecture.id}
@@ -45,7 +53,7 @@ const Lecture = ({
             Lecture {index + 1}: {lecture.name}
           </h4>
           <div className="flex space-x-2 w-full sm:w-1/4 justify-center sm:justify-end">
-            <Button variant="update" className="text-sm">
+            <Button variant="update" className="text-sm" onClick={handleUpdate}>
               Update
             </Button>
             <Button
@@ -105,6 +113,29 @@ const Lecture = ({
       >
         <p>Are you sure you want to delete this lecture?</p>
       </DeleteModal>
+
+      <UpdateModal
+        isOpen={showUpdateModal}
+        onClose={() => setShowUpdateModal(false)}
+        title={`Update Lecture: ${lecture.name}`}
+      >
+        <UpdateLecture
+          id={lecture.id!}
+          lectureUpdateRequest={{
+            originalName: lecture.name!,
+            originalDescription: lecture.description!,
+            originalPreparationVideoLink: lecture.preparationVideoLink,
+            originalLectionVideoLink: lecture.lectionVideoLink,
+          }}
+          handleUpdateLecture={() => {
+            setShowUpdateModal(false);
+          }}
+          onLectureUpdated={(name: string) => {
+            handleUpdateLecture(name);
+            setShowUpdateModal(false);
+          }}
+        />
+      </UpdateModal>
     </li>
   );
 };
