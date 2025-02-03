@@ -6,7 +6,7 @@ import { LectureProps } from "../types/lectureTypes";
 import Lecture from "../components/lecture";
 import CreateLecture from "../components/createLecture";
 import SuccessMessage from "../components/successMessage";
-import { useAppSelector } from "../context/hooks";
+import { useAppSelector } from "../redux/hooks";
 import Button from "../components/button";
 
 const DetailsDanceClass = () => {

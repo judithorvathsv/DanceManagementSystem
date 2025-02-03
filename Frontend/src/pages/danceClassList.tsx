@@ -4,7 +4,7 @@ import DanceClass from "../components/danceClass";
 import { DanceClassProp } from "../types/danceClassTypes";
 import CreateDanceClass from "../components/createDanceClass";
 import SuccessMessage from "../components/successMessage";
-import { useAppSelector } from "../context/hooks";
+import { useAppSelector } from "../redux/hooks";
 import Button from "../components/button";
 
 const DanceClassList = () => {

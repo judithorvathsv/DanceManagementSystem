@@ -7,7 +7,7 @@ import { useNavigate } from "@tanstack/react-router";
 import DeleteModal from "./deleteModal";
 import UpdateModal from "./updateModal";
 import UpdateClass from "./updateClass";
-import { useAppSelector } from "../context/hooks";
+import { useAppSelector } from "../redux/hooks";
 
 const DanceClass = ({
   name,

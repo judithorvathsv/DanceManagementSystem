@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { danceClassesFetch } from "../utils/danceClassFetch";
 import { DanceClassProp } from "../types/danceClassTypes";
 import ErrorMessage from "./errorMessage";
-import { useAppDispatch, useAppSelector } from "../context/hooks";
-import { setRole } from "../context/userSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setRole } from "../redux/userSlice";
 
 const NavBar = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);

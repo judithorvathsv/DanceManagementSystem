@@ -3,8 +3,8 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useForm, Controller } from "react-hook-form";
 import SuccessMessage from "../components/successMessage";
 import { loginUser } from "../utils/userFetch";
-import { setRole } from "../context/userSlice";
-import { useAppDispatch } from "../context/hooks";
+import { setRole } from "../redux/userSlice";
+import { useAppDispatch } from "../redux/hooks";
 import Button from "../components/button";
 
 interface FormData {

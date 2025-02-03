@@ -6,7 +6,7 @@ import YoutubeEmbed from "./youtubeEmbed";
 import Button from "./button";
 import UpdateModal from "./updateModal";
 import UpdateLecture from "./updateLecture";
-import { useAppSelector } from "../context/hooks";
+import { useAppSelector } from "../redux/hooks";
 
 const Lecture = ({
   lecture,

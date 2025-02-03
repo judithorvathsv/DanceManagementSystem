@@ -4,7 +4,7 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import "./index.css";
 import { Provider } from "react-redux";
-import { store } from "./context/store";
+import { store } from "./redux/store";
 
 declare module "@tanstack/react-router" {
   interface Register {
