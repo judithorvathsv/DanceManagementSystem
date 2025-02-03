@@ -4,6 +4,7 @@ import DanceClass from "../components/danceClass";
 import { DanceClassProp } from "../types/danceClassTypes";
 import CreateDanceClass from "../components/createDanceClass";
 import SuccessMessage from "../components/successMessage";
+import { useAppSelector } from "../context/hooks";
 
 const DanceClassList = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);
@@ -11,6 +12,8 @@ const DanceClassList = () => {
   const [showCreateDanceClass, setShowCreateDanceClass] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+
+  const userRole = useAppSelector((state) => state.user.role);
 
   const getDanceClasses = async () => {
     try {
@@ -71,11 +74,11 @@ const DanceClassList = () => {
 
   return (
     <div className="bg-black p-8 items-center flex flex-col text-center min-h-screen">
-      <h2 className="text-3xl font-bold mb-8">Our Classes</h2>
+      <h2 className="text-3xl font-bold mb-12 pt-8 sm:pt-0">Our Classes</h2>
 
       <div className="bg-main p-4 md:p-12 w-[110%] md:w-full max-w-8xl border border-prim rounded-lg mt-4">
         <div className="w-full max-w-8xl">
-          {!showCreateDanceClass && (
+          {!showCreateDanceClass && userRole == "Admin" && (
             <>
               {/* Mobile: under each other */}
               <div className="flex flex-col items-center md:hidden mb-12">

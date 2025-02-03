@@ -7,6 +7,7 @@ import { useNavigate } from "@tanstack/react-router";
 import DeleteModal from "./deleteModal";
 import UpdateModal from "./updateModal";
 import UpdateClass from "./updateClass";
+import { useAppSelector } from "../context/hooks";
 
 const DanceClass = ({
   name,
@@ -18,6 +19,8 @@ const DanceClass = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+
+  const userRole = useAppSelector((state) => state.user.role);
 
   const handleDeleteInitiate = () => {
     setShowDeleteModal(true);
@@ -97,9 +100,6 @@ const DanceClass = ({
       )}
 
       <li className="w-full mx-auto bg-main rounded-lg overflow-hidden border-2 border-prim shadow-lg shadow-prim/20 mb-6">
-
-
-      
         <div className="bg-gradient-to-r from-prim to-prim-dark hover:from-prim-dark hover:to-prim p-4 transition-all duration-300 ease-in-out">
           <div className="flex flex-col sm:flex-row items-center justify-between">
             <h4 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-0 w-full sm:w-1/3 text-black text-center sm:text-left">
@@ -107,13 +107,16 @@ const DanceClass = ({
             </h4>
 
             <div className="flex space-x-2 w-full sm:w-2/3 justify-center sm:justify-end">
-              <Button
-                variant="update"
-                onClick={handleUpdate}
-                className="text-sm"
-              >
-                Update Class
-              </Button>
+              {userRole == "Admin" && (
+                <Button
+                  variant="update"
+                  onClick={handleUpdate}
+                  className="text-sm"
+                >
+                  Update Class
+                </Button>
+              )}
+
               <Button
                 variant="update"
                 onClick={handleShowLectures}
@@ -121,13 +124,16 @@ const DanceClass = ({
               >
                 Lectures
               </Button>
-              <Button
-                variant="delete"
-                onClick={handleDeleteInitiate}
-                className="text-sm"
-              >
-                Delete
-              </Button>
+
+              {userRole == "Admin" && (
+                <Button
+                  variant="delete"
+                  onClick={handleDeleteInitiate}
+                  className="text-sm"
+                >
+                  Delete
+                </Button>
+              )}
             </div>
           </div>
         </div>

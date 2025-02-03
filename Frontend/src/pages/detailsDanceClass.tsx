@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearch } from "@tanstack/react-router";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { getOneDanceClassFetch } from "../utils/danceClassFetch";
 import { components } from "../lib/api/v1";
 import { LectureProps } from "../types/lectureTypes";
@@ -20,6 +20,7 @@ const DetailsDanceClass = () => {
   const [fetchTrigger, setFetchTrigger] = useState(false);
 
   const userRole = useAppSelector((state) => state.user.role);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDanceClassDetails = async () => {
@@ -57,6 +58,10 @@ const DetailsDanceClass = () => {
     showTempSuccessMessage(`${lectureName} lecture updated successfully.`);
   };
 
+  const handleBackToClassList = () => {
+    navigate({ to: "/danceClassList" });
+  };
+
   const renderCreateLectureButton = () =>
     !showCreateLecture && (
       <button
@@ -83,6 +88,15 @@ const DetailsDanceClass = () => {
       />
     );
 
+  const renderBackToClassListButton = () => (
+    <button
+      className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 sm:mt-0 rounded"
+      onClick={handleBackToClassList}
+    >
+      Back to class list
+    </button>
+  );
+
   if (!danceClass) {
     return <p>Error fetching the class, try again</p>;
   }
@@ -96,6 +110,7 @@ const DetailsDanceClass = () => {
         <div className="flex flex-col items-center md:hidden mb-6 sm:mb-12">
           <h3 className="text-2xl">All Lectures</h3>
           {userRole == "Admin" && renderCreateLectureButton()}
+          {userRole == "User" && renderBackToClassListButton()}
         </div>
 
         {/* Desktop, tablet: next to each other */}
@@ -104,6 +119,7 @@ const DetailsDanceClass = () => {
           <h3 className="text-2xl text-center w-1/3">All Lectures</h3>
           <div className="w-1/3 flex justify-end">
             {userRole == "Admin" && renderCreateLectureButton()}
+            {userRole == "User" && renderBackToClassListButton()}
           </div>
         </div>
       </div>
