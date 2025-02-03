@@ -6,6 +6,7 @@ import YoutubeEmbed from "./youtubeEmbed";
 import Button from "./button";
 import UpdateModal from "./updateModal";
 import UpdateLecture from "./updateLecture";
+import { useAppSelector } from "../context/hooks";
 
 const Lecture = ({
   lecture,
@@ -15,6 +16,8 @@ const Lecture = ({
 }: LectureDetailProps) => {
   const [submitError, setSubmitError] = useState("");
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+
+  const userRole = useAppSelector((state) => state.user.role);
 
   const openDeleteModal = () => {
     const modal = document.getElementById(
@@ -53,16 +56,24 @@ const Lecture = ({
             Lecture {index + 1}: {lecture.name}
           </h4>
           <div className="flex space-x-2 w-full sm:w-1/4 justify-center sm:justify-end">
-            <Button variant="update" className="text-sm" onClick={handleUpdate}>
-              Update
-            </Button>
-            <Button
-              variant="delete"
-              onClick={openDeleteModal}
-              className="text-sm"
-            >
-              Delete
-            </Button>
+            {userRole == "Admin" && (
+              <>
+                <Button
+                  variant="update"
+                  className="text-sm"
+                  onClick={handleUpdate}
+                >
+                  Update
+                </Button>
+                <Button
+                  variant="delete"
+                  onClick={openDeleteModal}
+                  className="text-sm"
+                >
+                  Delete
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>

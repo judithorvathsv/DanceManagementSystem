@@ -6,6 +6,7 @@ import { LectureProps } from "../types/lectureTypes";
 import Lecture from "../components/lecture";
 import CreateLecture from "../components/createLecture";
 import SuccessMessage from "../components/successMessage";
+import { useAppSelector } from "../context/hooks";
 
 const DetailsDanceClass = () => {
   const search = useSearch({ from: "/detailsDanceClass" });
@@ -17,6 +18,8 @@ const DetailsDanceClass = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [fetchTrigger, setFetchTrigger] = useState(false);
+
+  const userRole = useAppSelector((state) => state.user.role);
 
   useEffect(() => {
     const fetchDanceClassDetails = async () => {
@@ -92,7 +95,7 @@ const DetailsDanceClass = () => {
         {/* Mobile: under each other */}
         <div className="flex flex-col items-center md:hidden mb-6 sm:mb-12">
           <h3 className="text-2xl">All Lectures</h3>
-          {renderCreateLectureButton()}
+          {userRole == "Admin" && renderCreateLectureButton()}
         </div>
 
         {/* Desktop, tablet: next to each other */}
@@ -100,7 +103,7 @@ const DetailsDanceClass = () => {
           <div className="w-1/3"></div>
           <h3 className="text-2xl text-center w-1/3">All Lectures</h3>
           <div className="w-1/3 flex justify-end">
-            {renderCreateLectureButton()}
+            {userRole == "Admin" && renderCreateLectureButton()}
           </div>
         </div>
       </div>
