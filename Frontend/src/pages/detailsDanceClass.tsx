@@ -140,7 +140,7 @@ const DetailsDanceClass = () => {
       {renderCreateLectureForm()}
 
       {danceClass.lectures && danceClass.lectures.length > 0 ? (
-        <ul className="space-y-6">
+        <ul className="space-y-24">
           {danceClass.lectures.map((lecture: LectureProps, index: number) => (
             <Lecture
               lecture={lecture}
