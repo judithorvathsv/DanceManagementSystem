@@ -1,9 +1,8 @@
-using DanceApi.Models;
 using DanceApi.Models.Dtos;
 
 namespace DanceApi.Dtos
 {
-    public class DanceClassDto
+	public class DanceClassDto
     {
         public Guid Id { get; set; }
 

@@ -1,10 +1,9 @@
 using DanceApi.Models;
 using DanceApi.Models.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace DanceApi.Data
 {
-    public static class DataSeeder
+	public static class DataSeeder
     {
         public static async Task SeedAsync(ApplicationDbContext context)
         {

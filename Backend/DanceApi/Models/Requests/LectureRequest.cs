@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace DanceApi.Models.Requests
 {
-    public class LectureRequest
+	public class LectureRequest
     {
         public required string Name { get; set; }
 
