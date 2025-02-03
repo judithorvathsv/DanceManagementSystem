@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\csharp\\20250120Dance\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\data\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\data\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|c:\\users\\admin\\csharp\\20250120dance\\backend\\danceapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{437FF9A7-357C-65EA-E795-FE8045237822}|Backend\\DanceApi\\DanceApi.csproj|solutionrelative:backend\\danceapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,12 +37,38 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Backend\\DanceApi\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Backend\\DanceApi\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T13:45:08.984Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "DataSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Data\\DataSeeder.cs",
+              "RelativeDocumentMoniker": "Backend\\DanceApi\\Data\\DataSeeder.cs",
+              "ToolTip": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Data\\DataSeeder.cs",
+              "RelativeToolTip": "Backend\\DanceApi\\Data\\DataSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T13:44:37.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UserMapping.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Mapping\\UserMapping.cs",
               "RelativeDocumentMoniker": "Backend\\DanceApi\\Mapping\\UserMapping.cs",
@@ -46,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Backend\\DanceApi\\Controllers\\UsersController.cs",
@@ -59,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DanceClassDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Models\\Dtos\\DanceClassDto.cs",
               "RelativeDocumentMoniker": "Backend\\DanceApi\\Models\\Dtos\\DanceClassDto.cs",
@@ -71,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "LecturesController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\csharp\\20250120Dance\\Backend\\DanceApi\\Controllers\\LecturesController.cs",
               "RelativeDocumentMoniker": "Backend\\DanceApi\\Controllers\\LecturesController.cs",
