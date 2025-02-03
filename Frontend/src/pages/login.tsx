@@ -42,24 +42,21 @@ const Login = () => {
 
     try {
       const response = await loginUser(data.email, data.password);
+      console.log(response.data.role)
       if (response.data.role) {
         dispatch(setRole(response.data.role));
         reset();
         navigate({ to: "/danceClassList" });
       }
+      if (response.data.role == 'unknown') {  
+        setSubmitError("Invalid credentials");
+      }
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        if (
-          error.message.includes("Not Found") ||
-          error.message === "Invalid credentials"
-        ) {
-          setSubmitError("Invalid credentials");
-        } else {
-          setSubmitError(error.message);
-        }
-      } else if (typeof error === "string") {
+      if (error instanceof Error) {      
+          setSubmitError("Invalid credentials");        
+      } else if (typeof error === "string") {   
         setSubmitError(error);
-      } else {
+      } else {     
         setSubmitError("An unexpected error occurred. Please try again later.");
       }
     }
@@ -90,7 +87,7 @@ const Login = () => {
           />
         )}
 
-        {submitError && <div className="text-error mb-4">{submitError}</div>}
+        {submitError && <div className="text-error mb-4 text-center">{submitError}</div>}
 
         <h2 className="text-xl text-center mb-4 font-semibold text-white">
           Login

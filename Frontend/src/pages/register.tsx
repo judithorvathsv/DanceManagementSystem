@@ -59,7 +59,7 @@ const Register = () => {
   
   const registerForm = (
     <div className="w-full max-w-xs mx-auto bg-black pt-4 rounded">
-      {submitError && <div className="text-error mb-4">{submitError}</div>}
+      {submitError && <div className="text-error mb-4 text-center">{submitError}</div>}
 
       <h2
         className={`text-xl text-center mb-4 ${isRegisterPage ? "font-semibold" : ""} text-white`}

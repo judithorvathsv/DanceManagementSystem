@@ -99,47 +99,51 @@ const NavBar = () => {
                   setActiveItem("classes");
                 }}
               >
-                Admin Classes
+                Classes
               </Link>
             )}
 
-            {/* Dropdown for Classes */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setIsDropdownOpen(!isDropdownOpen);
-                  setActiveItem("dropdown");
-                }}
-                className={`cursor-pointer px-3 py-2 rounded ${
-                  activeItem === "dropdown" ? "bg-prim text-black" : ""
-                }`}
-              >
-                Classes
-              </button>
+            {userRole == "User" && (
+              <>
+                {/* Dropdown for Classes */}
+                <div className="relative">
+                  <button
+                    onClick={() => {
+                      setIsDropdownOpen(!isDropdownOpen);
+                      setActiveItem("dropdown");
+                    }}
+                    className={`cursor-pointer px-3 py-2 rounded ${
+                      activeItem === "dropdown" ? "bg-prim text-black" : ""
+                    }`}
+                  >
+                    Classes
+                  </button>
 
-              {isDropdownOpen && (
-                <div className="absolute left-0 mt-2 bg-prim border shadow-md rounded w-48 border-prim bg-white z-10">
-                  {danceClasses.map(
-                    (danceClass: { id: string; name: string }) => (
-                      <Link
-                        key={danceClass.id}
-                        to="/detailsDanceClass"
-                        search={{
-                          id: danceClass.id,
-                        }}
-                        className="block p-2 text-black hover:bg-black hover:text-prim transition-colors duration-300 ease-in-out"
-                        onClick={() => {
-                          setIsDropdownOpen(false);
-                          setActiveItem("");
-                        }}
-                      >
-                        {danceClass.name}
-                      </Link>
-                    )
+                  {isDropdownOpen && (
+                    <div className="absolute left-0 mt-2 bg-prim border shadow-md rounded w-48 border-prim bg-white z-10">
+                      {danceClasses.map(
+                        (danceClass: { id: string; name: string }) => (
+                          <Link
+                            key={danceClass.id}
+                            to="/detailsDanceClass"
+                            search={{
+                              id: danceClass.id,
+                            }}
+                            className="block p-2 text-black hover:bg-black hover:text-prim transition-colors duration-300 ease-in-out"
+                            onClick={() => {
+                              setIsDropdownOpen(false);
+                              setActiveItem("");
+                            }}
+                          >
+                            {danceClass.name}
+                          </Link>
+                        )
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
-            </div>
+              </>
+            )}
           </div>
         </div>
 
