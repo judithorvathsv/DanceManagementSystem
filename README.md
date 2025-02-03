@@ -1,6 +1,6 @@
 # Dance Classes App
 
-This is a web application for managing dance classes and lessons with roles for both users and admins. Built with **React** and **TypeScript** for the frontend, **.NET** for the backend, and uses **OpenAPI**, **Tanstack Router**, **Redux**, **TailwindCSS**, and **DaisyUI** for styling and UI components.
+This is a web application for managing dance classes and lessons, with user and admin roles, designed for a physical dance school. Built with **React** and **TypeScript** for the frontend, **.NET** for the backend, and uses **OpenAPI**, **Tanstack Router**, **Redux**, **TailwindCSS**, and **DaisyUI** for styling and UI components.
 
 ---
 
