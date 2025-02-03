@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import { danceClassesFetch } from "../utils/danceClassFetch";
 import { DanceClassProp } from "../types/danceClassTypes";
 import ErrorMessage from "./errorMessage";
+import { useAppSelector } from "../context/hooks"; 
 
 const NavBar = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [fetchError, setFetchError] = useState<string | unknown>(null);
   const [activeItem, setActiveItem] = useState("");
+ 
+
+  const userRole = useAppSelector((state) => state.user.role);
 
   useEffect(() => {
     const getDanceClasses = async () => {
@@ -148,7 +152,7 @@ const NavBar = () => {
             Register
           </Link>
           <Link
-            to="/login"
+            to="/login"            
             className={`cursor-pointer px-3 py-2 rounded ${
               activeItem === "login" ? "bg-prim text-black" : ""
             }`}
@@ -156,6 +160,7 @@ const NavBar = () => {
               setIsDropdownOpen(false);
               setActiveItem("login");
             }}
+            search={{ success: false }}
           >
             Login
           </Link>

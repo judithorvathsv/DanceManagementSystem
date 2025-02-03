@@ -4,8 +4,8 @@ import { getOneDanceClassFetch } from "../utils/danceClassFetch";
 import { components } from "../lib/api/v1";
 import { LectureProps } from "../types/lectureTypes";
 import Lecture from "../components/lecture";
-import SuccessMessage from "../components/successMessage";
 import CreateLecture from "../components/createLecture";
+import SuccessMessage from "../components/successMessage";
 
 const DetailsDanceClass = () => {
   const search = useSearch({ from: "/detailsDanceClass" });

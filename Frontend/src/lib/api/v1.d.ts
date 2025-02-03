@@ -341,9 +341,9 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "text/plain": string;
-                        "application/json": string;
-                        "text/json": string;
+                        "text/plain": components["schemas"]["LoginDto"];
+                        "application/json": components["schemas"]["LoginDto"];
+                        "text/json": components["schemas"]["LoginDto"];
                     };
                 };
             };
@@ -410,16 +410,13 @@ export interface components {
             preparationVideoLink?: string | null;
             lectionVideoLink?: string | null;
         };
-        /**
-         * Format: int32
-         * @enum {integer}
-         */
-        Role: 0 | 1;
+        LoginDto: {
+            role?: string | null;
+        };
         UserRequest: {
             name: string | null;
             email: string | null;
             password: string | null;
-            role?: components["schemas"]["Role"];
         };
     };
     responses: never;

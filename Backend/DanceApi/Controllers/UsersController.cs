@@ -1,4 +1,5 @@
 using DanceApi.Data;
+using DanceApi.Models.Dtos;
 using DanceApi.Models.Entities;
 using DanceApi.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
@@ -33,17 +34,23 @@ namespace DanceApi.Controllers
             return CreatedAtAction(nameof(Login), new { email = user.Email, password = user.Password }, userDto);
         }
 
+
         [HttpGet("login")]
-        public async Task<ActionResult<string>> Login(string email, string password)
+        public async Task<ActionResult<LoginDto>> Login([FromQuery] string email, [FromQuery] string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
             if (user is null)
             {
-                return NotFound();
+                return NotFound("Invalid credentials");
             }
-            return user.Role.ToString();
-        }
 
+            var loginDto = new LoginDto
+            {
+                Role = user.Role.ToString()
+            };
+
+            return Ok(loginDto);
+        }
 
     }
 }
