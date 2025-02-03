@@ -42,7 +42,6 @@ const Login = () => {
 
     try {
       const response = await loginUser(data.email, data.password);
-      console.log(response.data.role)
       if (response.data.role) {
         dispatch(setRole(response.data.role));
         reset();

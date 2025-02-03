@@ -3,15 +3,22 @@ import { useEffect, useState } from "react";
 import { danceClassesFetch } from "../utils/danceClassFetch";
 import { DanceClassProp } from "../types/danceClassTypes";
 import ErrorMessage from "./errorMessage";
-import { useAppSelector } from "../context/hooks";
+import { useAppDispatch, useAppSelector } from "../context/hooks";
+import { setRole } from "../context/userSlice";
 
 const NavBar = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [fetchError, setFetchError] = useState<string | unknown>(null);
   const [activeItem, setActiveItem] = useState("");
+  const [currentRole, setCurrentRole] = useState<string | null>(null);
 
+  const dispatch = useAppDispatch();
   const userRole = useAppSelector((state) => state.user.role);
+
+  useEffect(() => {
+    setCurrentRole(userRole);
+  }, [userRole]);
 
   useEffect(() => {
     const getDanceClasses = async () => {
@@ -28,6 +35,10 @@ const NavBar = () => {
     };
     getDanceClasses();
   }, []);
+
+  const handleLogout = () => {
+    dispatch(setRole(""));
+  };
 
   return (
     <nav className="flex flex-col sticky top-0 ">
@@ -155,31 +166,49 @@ const NavBar = () => {
           items-center 
           space-x-4"
         >
-          <Link
-            to="/register"
-            className={`cursor-pointer px-3 py-2 rounded ${
-              activeItem === "register" ? "bg-prim text-black" : ""
-            }`}
-            onClick={() => {
-              setIsDropdownOpen(false);
-              setActiveItem("register");
-            }}
-          >
-            Register
-          </Link>
-          <Link
-            to="/login"
-            className={`cursor-pointer px-3 py-2 rounded ${
-              activeItem === "login" ? "bg-prim text-black" : ""
-            }`}
-            onClick={() => {
-              setIsDropdownOpen(false);
-              setActiveItem("login");
-            }}
-            search={{ success: false }}
-          >
-            Login
-          </Link>
+          {(currentRole == null || currentRole == "") && (
+            <>
+              <Link
+                to="/register"
+                className={`cursor-pointer px-3 py-2 rounded ${
+                  activeItem === "register" ? "bg-prim text-black" : ""
+                }`}
+                onClick={() => {
+                  setIsDropdownOpen(false);
+                  setActiveItem("register");
+                }}
+              >
+                Register
+              </Link>
+              <Link
+                to="/login"
+                className={`cursor-pointer px-3 py-2 rounded ${
+                  activeItem === "login" ? "bg-prim text-black" : ""
+                }`}
+                onClick={() => {
+                  setIsDropdownOpen(false);
+                  setActiveItem("login");
+                }}
+                search={{ success: false }}
+              >
+                Login
+              </Link>
+            </>
+          )}
+
+          {currentRole !== null && currentRole !== "" && (
+            <Link
+              to="/login"
+              className={`cursor-pointer px-3 py-2 rounded `}
+              onClick={() => {
+                setIsDropdownOpen(false);
+                handleLogout();
+              }}
+              search={{ success: false }}
+            >
+              Logout
+            </Link>
+          )}
         </div>
       </div>
       {fetchError != null && <ErrorMessage message={fetchError} />}
