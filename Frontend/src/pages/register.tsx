@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useForm, Controller } from "react-hook-form";
 import { saveNewUser } from "../utils/userFetch";
+import Button from "../components/button";
 
 interface FormData {
   name: string;
@@ -43,7 +44,7 @@ const Register = () => {
     }
   };
 
-    // Needed to remove 'Admin' from input
+  // Needed to remove 'Admin' from input
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   useEffect(() => {
     const clearAdminValue = () => {
@@ -56,10 +57,11 @@ const Register = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  
   const registerForm = (
     <div className="w-full max-w-xs mx-auto bg-black pt-4 rounded">
-      {submitError && <div className="text-error mb-4 text-center">{submitError}</div>}
+      {submitError && (
+        <div className="text-error mb-4 text-center">{submitError}</div>
+      )}
 
       <h2
         className={`text-xl text-center mb-4 ${isRegisterPage ? "font-semibold" : ""} text-white`}
@@ -144,12 +146,9 @@ const Register = () => {
           )}
         </div>
 
-        <button
-          type="submit"
-          className="bg-prim hover:bg-prim-dark text-black font-bold py-2 px-4 rounded w-full"
-        >
+        <Button type="submit" variant="primary" className="w-full">
           Register
-        </button>
+        </Button>
       </form>
     </div>
   );

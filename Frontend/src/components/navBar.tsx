@@ -87,24 +87,25 @@ const NavBar = () => {
           sm:mb-0"
         >
           <div className="flex space-x-4">
-            <Link
-              to="/"
-              className={`cursor-pointer px-3 py-2 rounded ${
-                activeItem === "home" ? "bg-prim text-black" : ""
-              }`}
-              onClick={() => {
-                setIsDropdownOpen(false);
-                setActiveItem("home");
-              }}
-            >
-              Home
-            </Link>
+            {(currentRole == null || currentRole == "") && (
+              <Link
+                to="/"
+                className={`cursor-pointer px-3 py-2 rounded ${
+                  activeItem === "home" ? "bg-prim text-black" : ""
+                }`}
+                onClick={() => {
+                  setIsDropdownOpen(false);
+                  setActiveItem("home");
+                }}
+              >
+                Home
+              </Link>
+            )}
+
             {userRole == "Admin" && (
               <Link
                 to="/danceClassList"
-                className={`cursor-pointer px-3 py-2 rounded ${
-                  activeItem === "classes" ? "bg-prim text-black" : ""
-                }`}
+                className={`cursor-pointer px-3 py-2 rounded hover:bg-prim-dark hover:text-black`}
                 onClick={() => {
                   setIsDropdownOpen(false);
                   setActiveItem("classes");
@@ -121,10 +122,10 @@ const NavBar = () => {
                   <button
                     onClick={() => {
                       setIsDropdownOpen(!isDropdownOpen);
-                      setActiveItem("dropdown");
+                      setActiveItem("dropdown");             
                     }}
-                    className={`cursor-pointer px-3 py-2 rounded ${
-                      activeItem === "dropdown" ? "bg-prim text-black" : ""
+                    className={`cursor-pointer px-3 py-2 rounded hover:bg-prim-dark hover:text-black ${
+                      isDropdownOpen ? "bg-prim text-black" : ""
                     }`}
                   >
                     Classes
@@ -199,7 +200,7 @@ const NavBar = () => {
           {currentRole !== null && currentRole !== "" && (
             <Link
               to="/login"
-              className={`cursor-pointer px-3 py-2 rounded `}
+              className={`cursor-pointer px-3 py-2 rounded hover:bg-prim-dark hover:text-black`}
               onClick={() => {
                 setIsDropdownOpen(false);
                 handleLogout();

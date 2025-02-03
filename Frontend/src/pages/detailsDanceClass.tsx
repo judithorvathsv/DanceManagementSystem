@@ -7,6 +7,7 @@ import Lecture from "../components/lecture";
 import CreateLecture from "../components/createLecture";
 import SuccessMessage from "../components/successMessage";
 import { useAppSelector } from "../context/hooks";
+import Button from "../components/button";
 
 const DetailsDanceClass = () => {
   const search = useSearch({ from: "/detailsDanceClass" });
@@ -64,12 +65,13 @@ const DetailsDanceClass = () => {
 
   const renderCreateLectureButton = () =>
     !showCreateLecture && (
-      <button
-        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 sm:mt-0 rounded"
+      <Button
+        variant="primaryDark"
         onClick={handleCreateLecture}
+        className="mt-8 sm:mt-0"
       >
         Create a new lecture
-      </button>
+      </Button>
     );
 
   const showTempSuccessMessage = (message: string) => {
@@ -89,12 +91,13 @@ const DetailsDanceClass = () => {
     );
 
   const renderBackToClassListButton = () => (
-    <button
-      className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 sm:mt-0 rounded"
+    <Button
+      variant="primaryDark"
       onClick={handleBackToClassList}
+      className="mt-8 sm:mt-0"
     >
       Back to class list
-    </button>
+    </Button>
   );
 
   if (!danceClass) {

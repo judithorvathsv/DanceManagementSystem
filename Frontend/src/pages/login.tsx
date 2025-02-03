@@ -5,6 +5,7 @@ import SuccessMessage from "../components/successMessage";
 import { loginUser } from "../utils/userFetch";
 import { setRole } from "../context/userSlice";
 import { useAppDispatch } from "../context/hooks";
+import Button from "../components/button";
 
 interface FormData {
   email: string;
@@ -47,20 +48,19 @@ const Login = () => {
         reset();
         navigate({ to: "/danceClassList" });
       }
-      if (response.data.role == 'unknown') {  
+      if (response.data.role == "unknown") {
         setSubmitError("Invalid credentials");
       }
     } catch (error: unknown) {
-      if (error instanceof Error) {      
-          setSubmitError("Invalid credentials");        
-      } else if (typeof error === "string") {   
+      if (error instanceof Error) {
+        setSubmitError("Invalid credentials");
+      } else if (typeof error === "string") {
         setSubmitError(error);
-      } else {     
+      } else {
         setSubmitError("An unexpected error occurred. Please try again later.");
       }
     }
   };
-
 
   // Needed to remove 'Admin' from input
   const emailInputRef = useRef<HTMLInputElement | null>(null);
@@ -86,7 +86,9 @@ const Login = () => {
           />
         )}
 
-        {submitError && <div className="text-error mb-4 text-center">{submitError}</div>}
+        {submitError && (
+          <div className="text-error mb-4 text-center">{submitError}</div>
+        )}
 
         <h2 className="text-xl text-center mb-4 font-semibold text-white">
           Login
@@ -145,12 +147,9 @@ const Login = () => {
             </span>
           )}
 
-          <button
-            type="submit"
-            className="bg-prim hover:bg-prim-dark text-black font-bold py-2 px-4 rounded"
-          >
+          <Button type="submit" variant="primary" className="w-full">
             Login
-          </button>
+          </Button>
         </form>
       </div>
     </div>

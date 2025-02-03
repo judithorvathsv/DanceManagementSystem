@@ -5,6 +5,7 @@ import { DanceClassProp } from "../types/danceClassTypes";
 import CreateDanceClass from "../components/createDanceClass";
 import SuccessMessage from "../components/successMessage";
 import { useAppSelector } from "../context/hooks";
+import Button from "../components/button";
 
 const DanceClassList = () => {
   const [danceClasses, setDanceClasses] = useState<DanceClassProp[]>([]);
@@ -54,12 +55,13 @@ const DanceClassList = () => {
 
   const renderCreateClassButton = () =>
     !showCreateDanceClass && (
-      <button
-        className="bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 md:mt-2 rounded"
+      <Button
+        variant="primaryDark"
         onClick={handleCreateClass}
+        className="mt-8 md:mt-2"
       >
         Create a new class
-      </button>
+      </Button>
     );
 
   const renderCreateClassForm = () =>

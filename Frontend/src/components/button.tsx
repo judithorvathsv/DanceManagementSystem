@@ -18,7 +18,8 @@ const Button = ({
     errorHover:"bg-transparent hover:bg-error border border-error text-error hover:text-black transition-colors duration-300",
     detail:"bg-transparent hover:bg-third-dark border border-third text-white hover:text-black transition-colors duration-300",
     delete: "bg-error-dark hover:bg-error text-white hover:text-black border border-error-dark transition-colors duration-300",
-    update: "bg-main hover:bg-third text-white hover:text-black border border-black transition-colors duration-300",  
+    update: "bg-main hover:bg-third text-white hover:text-black border border-black transition-colors duration-300", 
+    primaryDark: "bg-prim-dark hover:bg-prim text-black font-bold py-2 px-4 mt-8 md:mt-2 rounded duration-300", 
   };
 
   const disabledStyle = "opacity-50 cursor-not-allowed";
